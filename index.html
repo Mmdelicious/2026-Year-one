@@ -1693,6 +1693,145 @@
     70%, 100% { transform: scale(2); opacity: 0; }
   }
 
+  /* ---------- 线索提交 ---------- */
+  .head-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .contribute-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 12px 24px -18px rgba(18, 40, 28, 0.6);
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  }
+
+  .contribute-btn:hover {
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
+    transform: translateY(-1px);
+  }
+
+  .contribute-btn:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; }
+  .contribute-btn svg { width: 15px; height: 15px; }
+
+  .sheet.contribute { width: min(560px, calc(100vw - 32px)); }
+
+  .contrib-head { min-width: 0; }
+  .contrib-title { margin: 0; font-size: 16px; font-weight: 600; }
+  .contrib-sub { margin: 3px 0 0; font-size: 11px; color: var(--muted); }
+  .contrib-intro { margin: 8px 0 0; font-size: 11.5px; line-height: 1.65; color: #6f7a71; }
+  .contrib-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; margin-top: 8px; }
+  .contrib-grid .field { margin-top: 10px; }
+  .contrib-section-title { margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--ink); }
+  .contrib-tools { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 7px; }
+  .contrib-tools .supp-btn { padding: 8px 12px; font-size: 12px; }
+  .contrib-loc {
+    margin-top: 8px;
+    padding: 9px 11px;
+    border: 1px dashed #d8d2c2;
+    border-radius: 10px;
+    background: #faf8f2;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: #8b928b;
+  }
+  .contrib-loc.is-set { border-style: solid; border-color: #cfe0d3; background: #f1f8f2; color: var(--accent-deep); }
+  .contrib-status { min-height: 1.2em; margin: 8px 0 0; font-size: 11.5px; line-height: 1.6; color: #6f7a71; }
+  .contrib-status.is-error { color: #a4573b; }
+  .contrib-status.is-ok { color: var(--accent-deep); }
+  .contrib-status a { color: var(--accent); }
+  .contrib-hint { margin: 8px 0 0; font-size: 10.5px; line-height: 1.6; color: #9aa199; }
+  .contrib-consent { display: flex; align-items: flex-start; gap: 8px; margin-top: 12px; font-size: 11.5px; line-height: 1.6; color: #55635a; cursor: pointer; }
+  .contrib-consent input { margin-top: 2px; accent-color: var(--accent); flex: 0 0 auto; }
+  .contrib-photo { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 7px; }
+  .contrib-photo img { display: none; width: 74px; height: 74px; object-fit: cover; border-radius: 9px; border: 1px solid var(--line); background: #f3efe6; }
+  .contrib-photo img.is-on { display: block; }
+  .contrib-photo small { flex: 1 1 200px; font-size: 10.5px; line-height: 1.55; color: #8b928b; }
+  .contrib-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .contrib-actions .export-btn { padding: 9px 14px; font-size: 12px; }
+  .contrib-actions .ghost-btn { padding: 8px 12px; font-size: 11.5px; }
+
+  .field select,
+  .field input[type="datetime-local"] {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 8px 10px;
+    border: 1px solid #ddd7c8;
+    border-radius: 9px;
+    background: #fff;
+    font: inherit;
+    color: var(--ink);
+    outline: none;
+  }
+  .field select:focus,
+  .field input[type="datetime-local"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(47, 107, 82, 0.1); }
+  .field input[type="file"] { display: block; margin-top: 6px; font-size: 11.5px; color: #55635a; }
+
+  .pick-banner {
+    position: absolute;
+    z-index: 8;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: calc(100% - 24px);
+    padding: 8px 9px 8px 14px;
+    border: 1px solid rgba(47, 107, 82, 0.3);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 14px 30px -18px rgba(18, 40, 28, 0.55);
+    font-size: 11.5px;
+    color: var(--accent-deep);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .pick-banner button {
+    pointer-events: auto;
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--muted);
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .pick-banner button:hover { color: var(--ink); border-color: #cbd6cd; }
+  .map-stage.is-picking,
+  .map-stage.is-picking .map-focus { cursor: crosshair; }
+
+  .draft-marker {
+    position: absolute;
+    z-index: 3;
+    width: 0;
+    height: 0;
+    transform: scale(calc(var(--inv) * var(--finv, 1)));
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+  .draft-marker .pin {
+    pointer-events: none;
+    background: var(--heat);
+    border-color: #fff;
+    box-shadow: 0 0 0 6px rgba(194, 112, 60, 0.18), 0 10px 20px -10px rgba(92, 48, 20, 0.8);
+  }
+  .draft-marker .marker-label { color: #8a4d27; border-color: #e7cbb4; background: rgba(255, 251, 246, 0.96); }
+
   /* ---------- 移动端 ---------- */
   @media (max-width: 860px) {
     .map-row { grid-template-columns: minmax(0, 1fr); }
@@ -1715,6 +1854,11 @@
     .focus-badge { left: 10px; top: 10px; font-size: 11px; padding: 6px 10px; }
     .chip { flex: 0 0 auto; }
     .layer-switches { width: 100%; }
+    .head-right { width: 100%; align-items: stretch; }
+    .contribute-btn { justify-content: center; }
+    .sheet.contribute { width: 100%; }
+    .contrib-grid { grid-template-columns: 1fr; }
+    .pick-banner { font-size: 10.5px; white-space: normal; text-align: left; }
     h1 { font-size: 19px; }
     .badge { font-size: 11.5px; padding: 7px 10px; }
     .map-card { padding: 8px; border-radius: 16px; }
@@ -1775,12 +1919,18 @@
       </div>
     </div>
 
+    <div class="head-right">
     <div class="badges">
       <span class="badge"><b id="statPosts">111</b> 帖 · <b id="statCats">34</b> 只猫 · <b id="statImages">270</b> 张图</span>
       <span class="badge">落图 <b id="catCount">10</b> / <b id="catTotal">34</b></span>
       <span class="badge">图片推断 <b id="statInferred">4</b> 只</span>
       <span class="badge">目击点 <b id="statSpots">6</b> 处 · 覆盖 <b id="statPlacedSights">9</b>/<b id="statSights">57</b> 条</span>
       <span class="badge" id="queueBadge">待合并 <b id="queueCount">0</b> 条</span>
+    </div>
+    <button type="button" class="contribute-btn" id="contributeBtn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+      提供猫咪线索
+    </button>
     </div>
   </header>
 
@@ -2356,9 +2506,17 @@
         <div class="focus-fx" id="focusFx" aria-hidden="true"><span class="focus-ring"></span><span class="focus-dot"><i></i><i></i></span></div>
         <div class="sights-layer" id="sightMarkers"></div>
                 <div class="markers" id="markers"></div>
+        <div class="draft-marker" id="draftMarker" hidden>
+          <span class="pin draft-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="15.4" r="4.6" fill="#ffffff"></circle><circle cx="6.4" cy="10.2" r="2.1" fill="#ffffff"></circle><circle cx="10.1" cy="8" r="2.1" fill="#ffffff"></circle><circle cx="13.9" cy="8" r="2.1" fill="#ffffff"></circle><circle cx="17.6" cy="10.2" r="2.1" fill="#ffffff"></circle></svg></span>
+          <span class="marker-label">待提交位置</span>
+        </div>
       </div>
       </div>
             <div class="focus-badge" id="focusBadge" hidden=""></div>
+      <div class="pick-banner" id="pickBanner" hidden>
+        <span>点击地图选择猫咪出现的位置</span>
+        <button type="button" id="pickCancel">取消</button>
+      </div>
       <div class="map-empty" id="mapEmpty" hidden="">当前筛选条件下没有点位</div>
     </div>
 
@@ -2494,6 +2652,14 @@
   var focusFx = document.getElementById("focusFx");
   var focusBadge = document.getElementById("focusBadge");
   var mapStatus = document.getElementById("mapStatus");
+  var ISSUE_REPO = "Mmdelicious/2026-Year-one";
+  // 近似校区边界：如定位偏差大，可在此校准
+  var CAMPUS_GEO = { north: 30.6860, south: 30.6770, west: 103.8154, east: 103.8270 };
+  var MAP_BOUNDS = { left: 3.2, right: 96.8, top: 2.6, bottom: 96.2 };
+  var ZONE_ANCHORS = { dorm: [[16.5, 11.5], [70.6, 66.7]], teaching: [[62.1, 27.9]], canteen: [[10.2, 47.5]] };
+  var contrib = { x: null, y: null, zone: "", photoName: "", photoUrl: "", picking: false, geoBusy: false };
+  var draftMarker = document.getElementById("draftMarker");
+  var pickBanner = document.getElementById("pickBanner");
   var markersBox = document.getElementById("markers");
   var sightBox = document.getElementById("sightMarkers");
   var emptyBlockBox = document.getElementById("emptyBlocks");
@@ -3489,6 +3655,8 @@
   }
 
   function openEmptySheet(block) {
+    sheet.dataset.mode = "detail";
+    sheet.classList.remove("contribute");
     sheet.textContent = "";
 
     var head = makeEl("div", "sheet-head");
@@ -3541,6 +3709,8 @@
   }
 
   function openSightSheet(spot) {
+    sheet.dataset.mode = "detail";
+    sheet.classList.remove("contribute");
     sheet.textContent = "";
 
     if (spot.method === "image") {
@@ -3683,6 +3853,8 @@
   }
 
   function openSheet(cat) {
+    sheet.dataset.mode = "detail";
+    sheet.classList.remove("contribute");
     buildSheet(cat);
     state.selectedId = cat.id;
     highlight(cat.id);
@@ -3696,11 +3868,438 @@
   }
 
   function closeSheet() {
+    var wasContrib = sheet.dataset.mode === "contribute";
     backdrop.hidden = true;
     sheet.hidden = true;
     state.selectedId = null;
     highlight(null);
+    if (wasContrib) {
+      resetContribState();
+      sheet.dataset.mode = "";
+      sheet.classList.remove("contribute");
+    } else {
+      stopPickMode(false);
+    }
   }
+
+  /* ---------- 读者线索提交 ---------- */
+  function resetContribState() {
+    stopPickMode(false);
+    clearContribDraft();
+    contrib.zone = "";
+    contrib.photoName = "";
+    if (contrib.photoUrl) {
+      URL.revokeObjectURL(contrib.photoUrl);
+      contrib.photoUrl = "";
+    }
+    contrib.geoBusy = false;
+  }
+
+  function updateContribLocation() {
+    var el = document.getElementById("contribLoc");
+    if (!el) return;
+    if (contrib.x == null || contrib.y == null) {
+      el.className = "contrib-loc is-empty";
+      el.textContent = "尚未选点。请点“在地图上选点”标记猫咪位置。";
+      return;
+    }
+    el.className = "contrib-loc is-set";
+    el.textContent = "已选点：x " + contrib.x.toFixed(1) + "%，y " + contrib.y.toFixed(1) + "%（示意地图百分比，会写入 Issue）";
+  }
+
+  function setContribStatus(text, type) {
+    var el = document.getElementById("contribStatus");
+    if (!el) return;
+    el.className = "contrib-status" + (type ? " is-" + type : "");
+    el.textContent = text || "";
+  }
+
+  function geoToMap(lat, lng) {
+    var marginLat = (CAMPUS_GEO.north - CAMPUS_GEO.south) * 0.2;
+    var marginLng = (CAMPUS_GEO.east - CAMPUS_GEO.west) * 0.2;
+    if (lat < CAMPUS_GEO.south - marginLat || lat > CAMPUS_GEO.north + marginLat ||
+        lng < CAMPUS_GEO.west - marginLng || lng > CAMPUS_GEO.east + marginLng) {
+      return null;
+    }
+    var x = MAP_BOUNDS.left + (lng - CAMPUS_GEO.west) / (CAMPUS_GEO.east - CAMPUS_GEO.west) * (MAP_BOUNDS.right - MAP_BOUNDS.left);
+    var y = MAP_BOUNDS.top + (CAMPUS_GEO.north - lat) / (CAMPUS_GEO.north - CAMPUS_GEO.south) * (MAP_BOUNDS.bottom - MAP_BOUNDS.top);
+    return { x: Math.max(0, Math.min(100, x)), y: Math.max(0, Math.min(100, y)) };
+  }
+
+  function nearestZone(x, y) {
+    var best = "other";
+    var bestD = Infinity;
+    Object.keys(ZONE_ANCHORS).forEach(function (zone) {
+      ZONE_ANCHORS[zone].forEach(function (p) {
+        var d = Math.hypot(x - p[0], y - p[1]);
+        if (d < bestD) { bestD = d; best = zone; }
+      });
+    });
+    return bestD <= 24 ? best : "other";
+  }
+
+  function suggestZoneByGeo() {
+    var btn = document.getElementById("contribGeo");
+    if (!navigator.geolocation) {
+      setContribStatus("当前浏览器不支持定位，请直接在地图上选点。", "error");
+      return;
+    }
+    if (contrib.geoBusy) return;
+    contrib.geoBusy = true;
+    if (btn) btn.disabled = true;
+    setContribStatus("正在获取大致位置…");
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      contrib.geoBusy = false;
+      if (btn) btn.disabled = false;
+      var p = geoToMap(pos.coords.latitude, pos.coords.longitude);
+      if (!p) {
+        setContribStatus("你似乎不在柳林校区范围内。仍可在地图上手动选点。", "error");
+        return;
+      }
+      var zone = nearestZone(p.x, p.y);
+      contrib.zone = zone;
+      var sel = document.getElementById("contribZone");
+      if (sel) sel.value = zone;
+      setContribStatus("定位显示你可能在「" + zoneLabel(zone) + "」附近。请点“在地图上选点”确认具体位置；定位只用于推荐区域，不会写入提交。", "ok");
+    }, function (err) {
+      contrib.geoBusy = false;
+      if (btn) btn.disabled = false;
+      var msg = err.code === 1 ? "定位权限被拒绝，请直接在地图上选点。"
+        : err.code === 3 ? "定位超时，请重试或直接在地图上选点。"
+        : "无法获取定位，请直接在地图上选点。";
+      setContribStatus(msg, "error");
+    }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
+  }
+
+  function contribField(labelText, node, required) {
+    var label = makeEl("label", "field");
+    label.appendChild(document.createTextNode(labelText + " "));
+    if (required) label.appendChild(makeEl("em", null, "*"));
+    label.appendChild(node);
+    return label;
+  }
+
+  function openContributeSheet() {
+    resetContribState();
+    sheet.dataset.mode = "contribute";
+    sheet.classList.add("contribute");
+    sheet.textContent = "";
+
+    var head = makeEl("div", "sheet-head");
+    var titleWrap = makeEl("div", "contrib-head");
+    titleWrap.appendChild(makeEl("h2", "contrib-title", "提供猫咪线索"));
+    titleWrap.appendChild(makeEl("p", "contrib-sub", "通过 GitHub Issue 提交最新目击"));
+    head.appendChild(titleWrap);
+    var close = makeEl("button", "close", "×");
+    close.type = "button";
+    close.setAttribute("aria-label", "关闭线索提交");
+    close.addEventListener("click", closeSheet);
+    head.appendChild(close);
+    sheet.appendChild(head);
+
+    var body = makeEl("div", "sheet-body");
+    body.appendChild(makeEl("p", "contrib-intro", "提交后会打开一条预填的 GitHub Issue，需要 GitHub 账号；内容会公开。定位只用于推荐区域，不会保存原始 GPS。"));
+    var grid = makeEl("div", "contrib-grid");
+
+    var name = document.createElement("input");
+    name.type = "text";
+    name.id = "contribName";
+    name.maxLength = 40;
+    name.placeholder = "例如：午午 / 新出现的小橘";
+
+    var zone = document.createElement("select");
+    zone.id = "contribZone";
+    zone.appendChild(new Option("请选择区域", ""));
+    ZONE_ORDER.slice(1).forEach(function (key) {
+      zone.appendChild(new Option(ZONES[key], key));
+    });
+    zone.addEventListener("change", function () { contrib.zone = zone.value; });
+
+    var place = document.createElement("input");
+    place.type = "text";
+    place.id = "contribPlace";
+    place.maxLength = 80;
+    place.placeholder = "例如：榕园 40 号楼东侧投喂点";
+
+    var time = document.createElement("input");
+    time.type = "datetime-local";
+    time.id = "contribTime";
+
+    grid.appendChild(contribField("猫名 / 临时称呼", name, true));
+    grid.appendChild(contribField("区域", zone, true));
+    grid.appendChild(contribField("地点描述", place, false));
+    grid.appendChild(contribField("目击时间", time, false));
+    body.appendChild(grid);
+
+    var notes = document.createElement("textarea");
+    notes.id = "contribNotes";
+    notes.maxLength = 500;
+    notes.placeholder = "外观、行为、是否亲人、和哪只猫一起出现…";
+    body.appendChild(contribField("外观 / 备注", notes, false));
+
+    var contact = document.createElement("input");
+    contact.type = "text";
+    contact.id = "contribContact";
+    contact.maxLength = 80;
+    contact.placeholder = "可选；会公开在 Issue 里";
+    body.appendChild(contribField("联系方式（可选，会公开）", contact, false));
+
+    var photo = document.createElement("input");
+    photo.type = "file";
+    photo.id = "contribPhoto";
+    photo.accept = "image/*";
+    body.appendChild(contribField("照片（可选）", photo, false));
+
+    var photoWrap = makeEl("div", "contrib-photo");
+    var photoPrev = makeEl("img");
+    photoPrev.id = "contribPreview";
+    photoPrev.alt = "猫咪照片预览";
+    var photoNote = makeEl("small", null, "照片无法通过链接上传；打开 Issue 后请把照片拖入编辑框。");
+    photoWrap.appendChild(photoPrev);
+    photoWrap.appendChild(photoNote);
+    body.appendChild(photoWrap);
+
+    photo.addEventListener("change", function () {
+      var file = photo.files && photo.files[0];
+      if (contrib.photoUrl) {
+        URL.revokeObjectURL(contrib.photoUrl);
+        contrib.photoUrl = "";
+      }
+      if (!file) {
+        contrib.photoName = "";
+        photoPrev.removeAttribute("src");
+        photoPrev.classList.remove("is-on");
+        photoNote.textContent = "照片无法通过链接上传；打开 Issue 后请把照片拖入编辑框。";
+        return;
+      }
+      contrib.photoName = file.name;
+      contrib.photoUrl = URL.createObjectURL(file);
+      photoPrev.src = contrib.photoUrl;
+      photoPrev.classList.add("is-on");
+      photoNote.textContent = "已选择：" + file.name + "（打开 Issue 后请把照片拖入编辑框）";
+    });
+
+    body.appendChild(makeEl("div", "contrib-section-title", "位置"));
+    body.appendChild(makeEl("p", "contrib-hint", "先在示意地图上选点；提交时会把坐标写入 Issue。"));
+    var tools = makeEl("div", "contrib-tools");
+    var pick = makeEl("button", "supp-btn", "在地图上选点");
+    pick.type = "button";
+    pick.id = "contribPick";
+    pick.addEventListener("click", enterPickMode);
+    var geo = makeEl("button", "supp-btn ghost", "使用我的定位");
+    geo.type = "button";
+    geo.id = "contribGeo";
+    geo.addEventListener("click", suggestZoneByGeo);
+    tools.appendChild(pick);
+    tools.appendChild(geo);
+    body.appendChild(tools);
+
+    var loc = makeEl("div", "contrib-loc is-empty");
+    loc.id = "contribLoc";
+    loc.textContent = "尚未选点。请点“在地图上选点”标记猫咪位置。";
+    body.appendChild(loc);
+
+    var status = makeEl("p", "contrib-status");
+    status.id = "contribStatus";
+    status.setAttribute("aria-live", "polite");
+    body.appendChild(status);
+
+    var consent = document.createElement("input");
+    consent.type = "checkbox";
+    consent.id = "contribConsent";
+    var consentLabel = makeEl("label", "contrib-consent");
+    consentLabel.appendChild(consent);
+    consentLabel.appendChild(document.createTextNode("我确认以上内容会公开在 GitHub Issue 上，且不包含精确 GPS 坐标。"));
+    body.appendChild(consentLabel);
+
+    var actions = makeEl("div", "contrib-actions");
+    var submit = makeEl("button", "export-btn", "在 GitHub 打开并提交");
+    submit.type = "button";
+    submit.id = "contribSubmit";
+    submit.addEventListener("click", submitContribution);
+    var copy = makeEl("button", "ghost-btn", "复制内容");
+    copy.type = "button";
+    copy.id = "contribCopy";
+    copy.addEventListener("click", copyContribution);
+    var cancel = makeEl("button", "ghost-btn", "取消");
+    cancel.type = "button";
+    cancel.addEventListener("click", closeSheet);
+    actions.appendChild(submit);
+    actions.appendChild(copy);
+    actions.appendChild(cancel);
+    body.appendChild(actions);
+    body.appendChild(makeEl("p", "contrib-hint", "提交会打开新标签页；若被浏览器拦截，请用“复制内容”。照片请在 Issue 编辑框里拖入。"));
+
+    sheet.appendChild(body);
+    sheet.hidden = false;
+    backdrop.hidden = false;
+    sheet.scrollTop = 0;
+    updateContribLocation();
+    name.focus();
+  }
+
+  function placeContribDraft(x, y) {
+    contrib.x = x;
+    contrib.y = y;
+    draftMarker.hidden = false;
+    draftMarker.style.left = x + "%";
+    draftMarker.style.top = y + "%";
+  }
+
+  function clearContribDraft() {
+    contrib.x = null;
+    contrib.y = null;
+    draftMarker.hidden = true;
+    updateContribLocation();
+  }
+
+  function stopPickMode(reopen) {
+    contrib.picking = false;
+    stage.classList.remove("is-picking");
+    stage.removeEventListener("click", handleMapPick, true);
+    pickBanner.hidden = true;
+    if (reopen && sheet.dataset.mode === "contribute") {
+      sheet.hidden = false;
+      backdrop.hidden = false;
+      updateContribLocation();
+    }
+  }
+
+  function enterPickMode() {
+    if (contrib.picking) return;
+    contrib.picking = true;
+    sheet.hidden = true;
+    backdrop.hidden = true;
+    pickBanner.hidden = false;
+    stage.classList.add("is-picking");
+    setZone("all");
+    stage.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "center" });
+    setTimeout(function () {
+      if (contrib.picking) stage.addEventListener("click", handleMapPick, true);
+    }, prefersReducedMotion() ? 0 : 450);
+  }
+
+  function handleMapPick(e) {
+    if (!contrib.picking) return;
+    if (e.target.closest("#pickBanner")) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var rect = stage.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    var x = Math.max(0, Math.min(100, (e.clientX - rect.left) / rect.width * 100));
+    var y = Math.max(0, Math.min(100, (e.clientY - rect.top) / rect.height * 100));
+    placeContribDraft(x, y);
+    var zone = nearestZone(x, y);
+    contrib.zone = zone;
+    stopPickMode(true);
+    var sel = document.getElementById("contribZone");
+    if (sel) sel.value = zone;
+    updateContribLocation();
+    setContribStatus("已选点。建议区域：" + zoneLabel(zone) + "；可在上方手动修改。", "ok");
+    var place = document.getElementById("contribPlace");
+    if (place) place.focus();
+  }
+
+  function readContribFields() {
+    function value(id) {
+      var el = document.getElementById(id);
+      return el ? el.value.trim() : "";
+    }
+    return {
+      name: value("contribName"),
+      zone: value("contribZone"),
+      place: value("contribPlace"),
+      time: value("contribTime"),
+      notes: value("contribNotes"),
+      contact: value("contribContact"),
+      consent: !!(document.getElementById("contribConsent") && document.getElementById("contribConsent").checked)
+    };
+  }
+
+  function validateContribution(fields) {
+    if (!fields.name) {
+      setContribStatus("请填写猫名或临时称呼。", "error");
+      return false;
+    }
+    if (!fields.zone && contrib.x != null && contrib.y != null) {
+      fields.zone = nearestZone(contrib.x, contrib.y);
+      contrib.zone = fields.zone;
+      var sel = document.getElementById("contribZone");
+      if (sel) sel.value = fields.zone;
+    }
+    if (!fields.zone) {
+      setContribStatus("请选择区域，或先在地图上选点。", "error");
+      return false;
+    }
+    if (contrib.x == null || contrib.y == null) {
+      setContribStatus("请先在地图上选点，标记猫咪出现的位置。", "error");
+      return false;
+    }
+    if (!fields.consent) {
+      setContribStatus("请先确认提交内容会公开在 GitHub Issue 上。", "error");
+      return false;
+    }
+    return true;
+  }
+
+  function buildContribIssue(fields) {
+    var zoneText = zoneLabel(fields.zone);
+    var title = "[猫咪线索] " + fields.name + " · " + (fields.place || zoneText);
+    var lines = [
+      "### 猫咪线索",
+      "",
+      "- 猫名 / 临时称呼：" + fields.name,
+      "- 区域：" + zoneText,
+      "- 地点描述：" + (fields.place || "未填写"),
+      "- 地图位置：x " + contrib.x.toFixed(1) + "%，y " + contrib.y.toFixed(1) + "%（示意地图百分比）",
+      "- 目击时间：" + (fields.time ? fields.time.replace("T", " ") : "未填写"),
+      "- 外观 / 备注：" + (fields.notes || "未填写"),
+      "- 联系方式：" + (fields.contact || "未填写（可选）"),
+      "- 定位：仅用于推荐区域，未保存原始 GPS",
+      "",
+      "> 由「校园猫分布地图」页面生成；提交内容会公开。",
+      "",
+      "<!-- 请把猫咪照片拖到此处（可选）" + (contrib.photoName ? "：" + contrib.photoName : "") + " -->"
+    ];
+    return { title: title, body: lines.join("\n") };
+  }
+
+  function submitContribution() {
+    var fields = readContribFields();
+    if (!validateContribution(fields)) return;
+    var issue = buildContribIssue(fields);
+    var url = "https://github.com/" + ISSUE_REPO + "/issues/new?title=" +
+      encodeURIComponent(issue.title) + "&body=" + encodeURIComponent(issue.body);
+    var win = window.open(url, "_blank");
+    if (win) {
+      try { win.opener = null; } catch (e) {}
+    }
+    if (!win) {
+      var status = document.getElementById("contribStatus");
+      if (status) {
+        status.className = "contrib-status is-error";
+        status.textContent = "浏览器拦截了新标签页。请手动打开：";
+        var link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "GitHub 提交页";
+        status.appendChild(link);
+      }
+      return;
+    }
+    setContribStatus("已在新标签页打开 GitHub，请检查内容并点击 Create issue 完成提交。", "ok");
+  }
+
+  function copyContribution() {
+    var fields = readContribFields();
+    if (!validateContribution(fields)) return;
+    var issue = buildContribIssue(fields);
+    copyText(issue.title + "\n\n" + issue.body, function () {
+      setContribStatus("已复制标题和内容，可粘贴到 GitHub 新建 Issue。", "ok");
+    });
+  }
+
 
   /* ---------- 未落图层 ---------- */
   var pendTab = "cats";
@@ -4752,9 +5351,19 @@
   );
 
   backdrop.addEventListener("click", closeSheet);
+  document.getElementById("contributeBtn").addEventListener("click", openContributeSheet);
+  document.getElementById("pickCancel").addEventListener("click", function () {
+    stopPickMode(true);
+    setContribStatus("已取消选点。", "");
+  });
 
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
+    if (contrib.picking) {
+      stopPickMode(true);
+      setContribStatus("已取消选点。", "");
+      return;
+    }
     if (!sheet.hidden) closeSheet();
   });
 
