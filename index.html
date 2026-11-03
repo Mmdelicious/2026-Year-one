@@ -2657,7 +2657,7 @@
   var CAMPUS_GEO = { north: 30.6860, south: 30.6770, west: 103.8154, east: 103.8270 };
   var MAP_BOUNDS = { left: 3.2, right: 96.8, top: 2.6, bottom: 96.2 };
   var ZONE_ANCHORS = { dorm: [[16.5, 11.5], [70.6, 66.7]], teaching: [[62.1, 27.9]], canteen: [[10.2, 47.5]] };
-  var contrib = { x: null, y: null, zone: "", photoName: "", photoUrl: "", picking: false, geoBusy: false };
+  var contrib = { x: null, y: null, zone: "", photoName: "", photoUrl: "", picking: false, pickReady: false, geoBusy: false };
   var draftMarker = document.getElementById("draftMarker");
   var pickBanner = document.getElementById("pickBanner");
   var markersBox = document.getElementById("markers");
@@ -4155,6 +4155,7 @@
 
   function stopPickMode(reopen) {
     contrib.picking = false;
+    contrib.pickReady = false;
     stage.classList.remove("is-picking");
     stage.removeEventListener("click", handleMapPick, true);
     pickBanner.hidden = true;
@@ -4168,14 +4169,16 @@
   function enterPickMode() {
     if (contrib.picking) return;
     contrib.picking = true;
+    contrib.pickReady = false;
     sheet.hidden = true;
     backdrop.hidden = true;
     pickBanner.hidden = false;
     stage.classList.add("is-picking");
     setZone("all");
     stage.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "center" });
+    stage.addEventListener("click", handleMapPick, true);
     setTimeout(function () {
-      if (contrib.picking) stage.addEventListener("click", handleMapPick, true);
+      if (contrib.picking) contrib.pickReady = true;
     }, prefersReducedMotion() ? 0 : 450);
   }
 
@@ -4184,6 +4187,7 @@
     if (e.target.closest("#pickBanner")) return;
     e.preventDefault();
     e.stopPropagation();
+    if (!contrib.pickReady) return;
     var rect = stage.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
     var x = Math.max(0, Math.min(100, (e.clientX - rect.left) / rect.width * 100));
