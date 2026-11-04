@@ -1,0 +1,57 @@
+name: Ingest cat sighting issue
+
+on:
+  issues:
+    types: [opened, edited, reopened, closed, deleted]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: cat-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Parse issue and update reader submissions
+        env:
+          PAGES_URL: https://mmdelicious.github.io/2026-Year-one/
+        run: node .github/scripts/ingest-issue.mjs
+
+      - name: Commit reader submission changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/reader-submissions.json data/reader-submissions.js
+          if [ -d assets/submissions ]; then
+            git add assets/submissions
+          fi
+          if git diff --cached --quiet; then
+            echo "No reader submission changes."
+          else
+            git commit -m "chore: sync reader submission #${{ github.event.issue.number }}"
+            git push
+          fi
+
+      - name: Comment on issue
+        if: github.event.action != 'deleted'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -f "$RUNNER_TEMP/cat-comment.md" ]; then
+            gh issue comment "${{ github.event.issue.number }}" --body-file "$RUNNER_TEMP/cat-comment.md"
+          fi

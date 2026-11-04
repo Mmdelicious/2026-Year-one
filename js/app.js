@@ -5,6 +5,29 @@
   var META = DATA.meta || {};
   var BASEMAP = DATA.basemap || {};
   var CATS = Array.isArray(DATA.cats) ? DATA.cats : [];
+  var READER_SUBMISSIONS = Array.isArray(window.CAMPUS_READER_SUBMISSIONS) ? window.CAMPUS_READER_SUBMISSIONS : [];
+  READER_SUBMISSIONS.forEach(function (sub) {
+    if (!sub || typeof sub.x !== "number" || typeof sub.y !== "number" || !sub.zone) return;
+    var id = "R-" + sub.issue;
+    if (CATS.some(function (c) { return c.id === id; })) return;
+    CATS.push({
+      id: id,
+      nickname: sub.nickname || "读者线索",
+      place: sub.place || "",
+      zone: sub.zone,
+      x: sub.x,
+      y: sub.y,
+      dx: 26,
+      dy: -12,
+      photo: sub.photo || null,
+      sourcePost: "GitHub Issue #" + sub.issue + (sub.author ? " · " + sub.author : ""),
+      sourceUrl: sub.sourceUrl || "",
+      note: sub.notes || "",
+      confidence: 0.35,
+      readerAdded: { via: "GitHub Issue", issue: sub.issue, author: sub.author || "", at: sub.createdAt || "" },
+      aliases: []
+    });
+  });
   var LOW = typeof META.confidenceThreshold === "number" ? META.confidenceThreshold : 0.6;
   var LANDMARKS = Array.isArray(DATA.landmarks) ? DATA.landmarks : [];
   var PENDING = DATA.pending || { cats: [], sightings: [] };
@@ -1009,10 +1032,18 @@
       body.appendChild(quote);
     }
 
-    if (cat.sourcePost) {
+    if (cat.sourcePost || cat.sourceUrl) {
       var source = makeEl("div", "source");
       source.appendChild(makeEl("b", null, "来源帖子"));
-      source.appendChild(document.createTextNode(cat.sourcePost));
+      source.appendChild(document.createTextNode(cat.sourcePost || "读者补充"));
+      if (cat.sourceUrl) {
+        var sourceLink = makeEl("a", "mini-link", "打开原文");
+        sourceLink.href = cat.sourceUrl;
+        sourceLink.target = "_blank";
+        sourceLink.rel = "noreferrer";
+        sourceLink.style.marginLeft = "6px";
+        source.appendChild(sourceLink);
+      }
       body.appendChild(source);
     }
 
@@ -1641,9 +1672,11 @@
       "- 外观 / 备注：" + (fields.notes || "未填写"),
       "- 联系方式：" + (fields.contact || "未填写（可选）"),
       "- 定位：仅用于推荐区域，未保存原始 GPS",
+      "- 提交确认：已确认公开",
       "",
-      "> 由「校园猫分布地图」页面生成；提交内容会公开。",
+      "> 由「校园猫分布地图」页面生成；提交内容会公开，并会自动收录到「读者补充（未核实）」图层。",
       "",
+      "<!-- cat-sighting:v1 -->",
       "<!-- 请把猫咪照片拖到此处（可选）" + (contrib.photoName ? "：" + contrib.photoName : "") + " -->"
     ];
     return { title: title, body: lines.join("\n") };
