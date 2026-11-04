@@ -1,1 +1,0 @@
-window.CAMPUS_READER_SUBMISSIONS = [];
