@@ -91,6 +91,12 @@
         <div class="empty-blocks" id="emptyBlocks"></div>
                 <div class="focus-shade" id="focusShade" aria-hidden="true"></div>
         <div class="focus-fx" id="focusFx" aria-hidden="true"><span class="focus-ring"></span><span class="focus-dot"><i></i><i></i></span></div>
+        <div class="cat-history-layer" id="catHistoryLayer" hidden>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <polyline class="history-line" id="historyLine" points=""></polyline>
+            <g id="historyDots"></g>
+          </svg>
+        </div>
         <div class="sights-layer" id="sightMarkers"></div>
                 <div class="markers" id="markers"></div>
         <div class="draft-marker" id="draftMarker" hidden>
@@ -103,6 +109,10 @@
       <div class="pick-banner" id="pickBanner" hidden>
         <span>点击地图选择猫咪出现的位置</span>
         <button type="button" id="pickCancel">取消</button>
+      </div>
+      <div class="history-badge" id="historyBadge" hidden>
+        <span id="historyBadgeText"></span>
+        <button type="button" id="historyClear">清除</button>
       </div>
       <div class="map-empty" id="mapEmpty" hidden="">当前筛选条件下没有点位</div>
     </div>
@@ -125,6 +135,23 @@
         <p class="zone-note" id="zoneNote">另有 48 条目击正文与配图都没有可判读地点，未计入区域统计；地图上斜纹区块表示该片区目前没有任何点位。</p>
   </aside>
   </div>
+
+  <section class="stats-card" aria-label="数据统计">
+    <div class="stats-head">
+      <h2>数据统计 <span id="catStatsSummary">正在统计…</span></h2>
+    </div>
+    <p class="stats-note">基于可定位记录：整理落点、读者线索与图片推断；图片推断不等同于已核实目击。当前整理数据多数只有 1 个落点，读者 Issue 会自动累积足迹；点击猫名可在地图上查看。</p>
+    <div class="stats-grid">
+      <div class="stats-col">
+        <h3>每只猫出现地点 <span id="catStatsCount"></span></h3>
+        <div class="stats-list" id="catStats"></div>
+      </div>
+      <div class="stats-col">
+        <h3>地点猫数排行 <span id="placeStatsCount"></span></h3>
+        <div class="stats-list" id="placeStats"></div>
+      </div>
+    </div>
+  </section>
 
     <details class="maint">
     <summary class="maint-summary"><span>待确认合并</span><span class="maint-count" id="mergeSummaryTop">14 组疑似 · 12 组可勾选</span></summary>

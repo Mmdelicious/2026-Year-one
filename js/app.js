@@ -6,28 +6,65 @@
   var BASEMAP = DATA.basemap || {};
   var CATS = Array.isArray(DATA.cats) ? DATA.cats : [];
   var READER_SUBMISSIONS = Array.isArray(window.CAMPUS_READER_SUBMISSIONS) ? window.CAMPUS_READER_SUBMISSIONS : [];
-  READER_SUBMISSIONS.forEach(function (sub) {
-    if (!sub || typeof sub.x !== "number" || typeof sub.y !== "number" || !sub.zone) return;
-    var id = "R-" + sub.issue;
-    if (CATS.some(function (c) { return c.id === id; })) return;
-    CATS.push({
-      id: id,
-      nickname: sub.nickname || "读者线索",
-      place: sub.place || "",
-      zone: sub.zone,
-      x: sub.x,
-      y: sub.y,
-      dx: 26,
-      dy: -12,
-      photo: sub.photo || null,
-      sourcePost: "GitHub Issue #" + sub.issue + (sub.author ? " · " + sub.author : ""),
-      sourceUrl: sub.sourceUrl || "",
-      note: sub.notes || "",
-      confidence: 0.35,
-      readerAdded: { via: "GitHub Issue", issue: sub.issue, author: sub.author || "", at: sub.createdAt || "" },
-      aliases: []
+  (function mergeReaderSubmissions() {
+    var groups = {};
+    READER_SUBMISSIONS.forEach(function (sub) {
+      if (!sub || typeof sub.x !== "number" || typeof sub.y !== "number" || !sub.zone) return;
+      var key = normalizeName(sub.nickname) || ("issue-" + sub.issue);
+      (groups[key] = groups[key] || []).push(sub);
     });
-  });
+    var curatedByName = {};
+    CATS.forEach(function (cat) {
+      if (cat.readerAdded) return;
+      [cat.nickname].concat(cat.aliases || []).forEach(function (name) {
+        var key = normalizeName(name);
+        if (key) curatedByName[key] = cat;
+      });
+    });
+    Object.keys(groups).forEach(function (key) {
+      var list = groups[key].slice().sort(compareReaderTime);
+      var observations = list.map(function (sub) {
+        return {
+          x: sub.x,
+          y: sub.y,
+          date: sub.time || String(sub.createdAt || "").slice(0, 10),
+          kind: "reader",
+          label: "GitHub Issue #" + sub.issue,
+          place: sub.place || "",
+          sourceUrl: sub.sourceUrl || "",
+          issue: sub.issue,
+          author: sub.author || "",
+          photo: sub.photo || null,
+          confidence: 0.35
+        };
+      });
+      var matched = curatedByName[key];
+      if (matched) {
+        matched.history = (matched.history || []).concat(observations);
+        return;
+      }
+      var latest = list[list.length - 1];
+      var withPhoto = list.slice().reverse().find(function (sub) { return sub.photo; });
+      CATS.push({
+        id: "R-" + latest.issue,
+        nickname: latest.nickname || "读者线索",
+        place: latest.place || "",
+        zone: latest.zone || "other",
+        x: latest.x,
+        y: latest.y,
+        dx: 26,
+        dy: -12,
+        photo: (withPhoto && withPhoto.photo) || null,
+        sourcePost: "GitHub Issue #" + latest.issue + (latest.author ? " · " + latest.author : ""),
+        sourceUrl: latest.sourceUrl || "",
+        note: latest.notes || "",
+        confidence: 0.35,
+        readerAdded: { via: "GitHub Issue", issue: latest.issue, author: latest.author || "", at: latest.createdAt || "" },
+        aliases: [],
+        history: observations
+      });
+    });
+  })();
   var LOW = typeof META.confidenceThreshold === "number" ? META.confidenceThreshold : 0.6;
   var LANDMARKS = Array.isArray(DATA.landmarks) ? DATA.landmarks : [];
   var PENDING = DATA.pending || { cats: [], sightings: [] };
@@ -39,6 +76,8 @@
 
   var ZONES = { dorm: "宿舍区", teaching: "教学区", canteen: "食堂", other: "其他" };
   var ZONE_ORDER = ["all", "dorm", "teaching", "canteen", "other"];
+
+  buildCatHistory();
 
   var state = {
     zone: "all",
@@ -66,6 +105,9 @@
   var contrib = { x: null, y: null, zone: "", photoName: "", photoUrl: "", picking: false, pickReady: false, geoBusy: false };
   var draftMarker = document.getElementById("draftMarker");
   var pickBanner = document.getElementById("pickBanner");
+  var catHistoryLayer = document.getElementById("catHistoryLayer");
+  var historyBadge = document.getElementById("historyBadge");
+  var historyBadgeText = document.getElementById("historyBadgeText");
   var markersBox = document.getElementById("markers");
   var sightBox = document.getElementById("sightMarkers");
   var emptyBlockBox = document.getElementById("emptyBlocks");
@@ -421,6 +463,331 @@
     });
   }
 
+  /* ---------- 历史足迹与统计 ---------- */
+  var PLACE_ALIASES = {
+    "晨曦操场后面": "晨曦体育场",
+    "晨曦操场": "晨曦体育场",
+    "敏园外": "敏园",
+    "食堂片区": "食堂",
+    "五谷堂片区": "五谷堂",
+    "校医院片区": "校医院"
+  };
+
+  function normalizeName(value) {
+    return String(value || "").trim().toLowerCase().replace(/\s+/g, "");
+  }
+
+  function compareReaderTime(a, b) {
+    var ka = String(a.time || a.createdAt || "");
+    var kb = String(b.time || b.createdAt || "");
+    if (ka !== kb) return ka.localeCompare(kb);
+    return Number(a.issue) - Number(b.issue);
+  }
+
+  function latestDate(value) {
+    var dates = String(value || "").match(/20\d{2}-\d{2}-\d{2}/g);
+    return dates ? dates.slice().sort().pop() : "";
+  }
+
+  function compareHistory(a, b) {
+    var da = String(a.date || "");
+    var db = String(b.date || "");
+    if (da && db && da !== db) return da.localeCompare(db);
+    if (da && !db) return -1;
+    if (!da && db) return 1;
+    var rank = { verified: 0, reader: 1, inferred: 2 };
+    return (rank[a.kind] || 0) - (rank[b.kind] || 0);
+  }
+
+  function compareHistoryDesc(a, b) {
+    var da = String(a.date || "");
+    var db = String(b.date || "");
+    if (da && db && da !== db) return db.localeCompare(da);
+    if (da && !db) return -1;
+    if (!da && db) return 1;
+    var rank = { verified: 0, reader: 1, inferred: 2 };
+    return (rank[a.kind] || 0) - (rank[b.kind] || 0);
+  }
+
+  function buildCatHistory() {
+    CATS.forEach(function (cat) {
+      if (!cat.history) cat.history = [];
+      if (!cat.readerAdded && isPlaced(cat) && !cat.history.some(function (o) { return o.kind === "verified"; })) {
+        cat.history.push({
+          x: cat.x,
+          y: cat.y,
+          date: latestDate(cat.sourcePost) || META.collectedAt || "",
+          kind: "verified",
+          label: "整理落点",
+          place: cat.place || "",
+          sourceUrl: cat.sourceUrl || "",
+          confidence: cat.confidence
+        });
+      }
+      if (cat.inference && Array.isArray(cat.inference.candidates)) {
+        cat.inference.candidates.forEach(function (cand) {
+          if (!cand || typeof cand.x !== "number" || typeof cand.y !== "number") return;
+          var exists = cat.history.some(function (o) {
+            return o.kind === "inferred" && o.x === cand.x && o.y === cand.y && o.place === (cand.name || "");
+          });
+          if (exists) return;
+          cat.history.push({
+            x: cand.x,
+            y: cand.y,
+            date: "",
+            kind: "inferred",
+            label: "图片推断 · " + (cand.name || ""),
+            place: cand.name || "",
+            sourceUrl: "",
+            confidence: cand.confidence
+          });
+        });
+      }
+      cat.history.sort(compareHistory);
+    });
+  }
+
+  function canonicalPlace(value) {
+    var text = String(value || "").trim();
+    if (!text) return "未标注";
+    var aliasKeys = Object.keys(PLACE_ALIASES);
+    for (var i = 0; i < aliasKeys.length; i++) {
+      if (text.indexOf(aliasKeys[i]) >= 0) return PLACE_ALIASES[aliasKeys[i]];
+    }
+    var best = "";
+    LANDMARKS.forEach(function (landmark) {
+      if (landmark && landmark.name && text.indexOf(landmark.name) >= 0 && landmark.name.length > best.length) {
+        best = landmark.name;
+      }
+    });
+    if (best) return best;
+    text = text.replace(/[（(].*?[)）]/g, "").replace(/\/.*$/, "");
+    text = text.replace(/(楼下|门口|外面|附近|后面|东侧|西侧|南侧|北侧|片区|一带|周围|旁边)$/g, "").trim();
+    return text || "未标注";
+  }
+
+  function renderStats() {
+    var catBox = document.getElementById("catStats");
+    var placeBox = document.getElementById("placeStats");
+    if (!catBox || !placeBox) return;
+
+    var cats = CATS.filter(function (cat) {
+      return !cat.mergedInto && cat.history && cat.history.length;
+    });
+    var catRows = cats.map(function (cat) {
+      var history = cat.history.slice();
+      var verified = history.filter(function (o) { return o.kind === "verified"; }).length;
+      var reader = history.filter(function (o) { return o.kind === "reader"; }).length;
+      var inferred = history.filter(function (o) { return o.kind === "inferred"; }).length;
+      var places = {};
+      history.forEach(function (o) { places[canonicalPlace(o.place || cat.place)] = 1; });
+      var last = history.map(function (o) { return o.date || ""; }).filter(Boolean).sort().pop() || "";
+      return {
+        cat: cat,
+        total: history.length,
+        verified: verified,
+        reader: reader,
+        inferred: inferred,
+        places: Object.keys(places).length,
+        placeList: Object.keys(places),
+        last: last
+      };
+    }).sort(function (a, b) {
+      return b.total - a.total || a.cat.nickname.localeCompare(b.cat.nickname);
+    });
+
+    var maxTotal = Math.max.apply(null, catRows.map(function (r) { return r.total; }).concat([1]));
+    var noLoc = CATS.filter(function (cat) {
+      return !cat.mergedInto && !(cat.history && cat.history.length);
+    }).length;
+    var summary = document.getElementById("catStatsSummary");
+    if (summary) {
+      summary.textContent = catRows.length + " 只有可定位记录 · " +
+        catRows.reduce(function (sum, r) { return sum + r.total; }, 0) + " 条记录" +
+        (noLoc ? " · " + noLoc + " 只暂无可定位记录" : "");
+    }
+    var catCount = document.getElementById("catStatsCount");
+    if (catCount) catCount.textContent = catRows.length + " 只";
+
+    catBox.textContent = "";
+    catRows.forEach(function (row) {
+      var el = makeEl("button", "stat-row cat-stat");
+      el.type = "button";
+      el.title = "在地图上查看 " + row.cat.nickname + " 的足迹";
+      el.addEventListener("click", function () { showCatHistory(row.cat.id); });
+      el.appendChild(makeEl("span", "sr-name", row.cat.nickname));
+      el.appendChild(makeEl("span", "sr-count", row.total + " 条"));
+      var placeText = row.placeList.length
+        ? row.placeList.slice(0, 3).join(" / ") + (row.placeList.length > 3 ? " 等" : "")
+        : "地点未记";
+      el.appendChild(makeEl("span", "sr-meta",
+        (ZONES[row.cat.zone] || "未分区") + " · " + placeText +
+        (row.last ? " · 最后 " + row.last : "")));
+      var bar = makeEl("span", "sr-bar");
+      var fill = makeEl("i");
+      fill.style.width = Math.round(row.total / maxTotal * 100) + "%";
+      bar.appendChild(fill);
+      el.appendChild(bar);
+      el.appendChild(makeEl("span", "sr-break",
+        "已核实 " + row.verified + " · 读者 " + row.reader + " · 推断 " + row.inferred));
+      catBox.appendChild(el);
+    });
+    if (!catRows.length) catBox.appendChild(makeEl("p", "stats-empty", "暂无可定位记录。"));
+
+    var buckets = {};
+    catRows.forEach(function (row) {
+      row.cat.history.forEach(function (o) {
+        var name = canonicalPlace(o.place || row.cat.place);
+        var bucket = buckets[name] || (buckets[name] = {
+          name: name, cats: {}, records: 0, verified: 0, reader: 0, inferred: 0, sightings: 0
+        });
+        bucket.records++;
+        if (o.kind === "verified") {
+          bucket.verified++;
+          bucket.cats[row.cat.id] = 1;
+        } else if (o.kind === "reader") {
+          bucket.reader++;
+          bucket.cats[row.cat.id] = 1;
+        } else {
+          bucket.inferred++;
+        }
+      });
+    });
+    SIGHT_SPOTS.forEach(function (spot) {
+      var name = canonicalPlace(spot.name);
+      var bucket = buckets[name] || (buckets[name] = {
+        name: name, cats: {}, records: 0, verified: 0, reader: 0, inferred: 0, sightings: 0
+      });
+      var count = Number(spot.count) || 1;
+      bucket.sightings += count;
+      bucket.records += count;
+    });
+    var placeRows = Object.keys(buckets).map(function (key) {
+      var bucket = buckets[key];
+      return {
+        name: bucket.name,
+        cats: Object.keys(bucket.cats).length,
+        records: bucket.records,
+        sightings: bucket.sightings,
+        verified: bucket.verified,
+        reader: bucket.reader,
+        inferred: bucket.inferred
+      };
+    }).sort(function (a, b) {
+      return b.cats - a.cats || b.records - a.records || a.name.localeCompare(b.name);
+    });
+    var maxCats = Math.max.apply(null, placeRows.map(function (r) { return r.cats; }).concat([0]));
+    var maxRecords = Math.max.apply(null, placeRows.map(function (r) { return r.records; }).concat([1]));
+    var placeCount = document.getElementById("placeStatsCount");
+    if (placeCount) placeCount.textContent = placeRows.length + " 个地点";
+
+    placeBox.textContent = "";
+    placeRows.slice(0, 12).forEach(function (row) {
+      var el = makeEl("div", "stat-row place-stat");
+      el.appendChild(makeEl("span", "sr-name", row.name));
+      el.appendChild(makeEl("span", "sr-count", row.cats + " 只猫"));
+      el.appendChild(makeEl("span", "sr-meta",
+        "记录 " + row.records + " 条 · 目击 " + row.sightings + " · 推断 " + row.inferred));
+      var bar = makeEl("span", "sr-bar");
+      var fill = makeEl("i");
+      var value = row.cats > 0 ? row.cats / Math.max(1, maxCats) : row.records / maxRecords;
+      fill.style.width = Math.round(value * 100) + "%";
+      bar.appendChild(fill);
+      el.appendChild(bar);
+      el.appendChild(makeEl("span", "sr-break",
+        "已核实 " + row.verified + " · 读者 " + row.reader));
+      placeBox.appendChild(el);
+    });
+    if (!placeRows.length) placeBox.appendChild(makeEl("p", "stats-empty", "暂无地点记录。"));
+  }
+
+  function buildHistoryBox(cat) {
+    var history = (cat.history || []).slice();
+    if (!history.length) return null;
+    var box = makeEl("div", "history-box");
+    var head = makeEl("div", "history-head");
+    head.appendChild(makeEl("b", null, "历史足迹"));
+    head.appendChild(makeEl("span", null, history.length + " 条可定位记录"));
+    box.appendChild(head);
+    var list = makeEl("div", "history-list");
+    history.sort(compareHistoryDesc).forEach(function (o) {
+      var row = makeEl("div", "history-item");
+      row.appendChild(makeEl("span", "history-date", o.date || "日期未记"));
+      row.appendChild(makeEl("span", "history-kind is-" + o.kind,
+        o.kind === "verified" ? "整理落点" : (o.kind === "reader" ? "读者线索" : "图片推断")));
+      row.appendChild(makeEl("span", "history-place", o.place || zoneLabel(cat.zone)));
+      if (o.sourceUrl) {
+        var link = makeEl("a", "mini-link", "来源");
+        link.href = o.sourceUrl;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        row.appendChild(link);
+      }
+      if (o.photo) {
+        var thumb = makeEl("img", "history-thumb");
+        thumb.src = o.photo;
+        thumb.alt = "目击照片";
+        thumb.loading = "lazy";
+        row.appendChild(thumb);
+      }
+      list.appendChild(row);
+    });
+    box.appendChild(list);
+    var view = makeEl("button", "supp-btn", "在地图上查看足迹");
+    view.type = "button";
+    view.addEventListener("click", function () {
+      closeSheet();
+      showCatHistory(cat.id);
+    });
+    box.appendChild(view);
+    return box;
+  }
+
+  function showCatHistory(catId) {
+    var cat = catById(catId);
+    if (!cat || !cat.history || !cat.history.length) return;
+    var history = cat.history.slice().sort(compareHistory);
+    var path = history.filter(function (o) { return o.kind !== "inferred"; });
+    var line = document.getElementById("historyLine");
+    if (line) {
+      line.setAttribute("points", path.map(function (o) { return o.x + "," + o.y; }).join(" "));
+      line.style.display = path.length > 1 ? "" : "none";
+    }
+    var dots = document.getElementById("historyDots");
+    if (dots) {
+      dots.textContent = "";
+      history.forEach(function (o) {
+        var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        dot.setAttribute("cx", o.x);
+        dot.setAttribute("cy", o.y);
+        dot.setAttribute("r", o.kind === "inferred" ? 1.05 : 1.35);
+        dot.setAttribute("class", "history-dot is-" + o.kind);
+        var title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        title.textContent = (o.date || "日期未记") + " · " +
+          (o.label || (o.kind === "verified" ? "整理落点" : (o.kind === "reader" ? "读者线索" : "图片推断"))) +
+          (o.place ? " · " + o.place : "");
+        dot.appendChild(title);
+        dots.appendChild(dot);
+      });
+    }
+    if (catHistoryLayer) catHistoryLayer.hidden = false;
+    if (historyBadge) historyBadge.hidden = false;
+    if (historyBadgeText) historyBadgeText.textContent = cat.nickname + " · " + history.length + " 条记录";
+    stage.classList.add("has-history");
+    stage.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "center" });
+  }
+
+  function clearCatHistory() {
+    if (catHistoryLayer) catHistoryLayer.hidden = true;
+    if (historyBadge) historyBadge.hidden = true;
+    stage.classList.remove("has-history");
+    var line = document.getElementById("historyLine");
+    if (line) line.setAttribute("points", "");
+    var dots = document.getElementById("historyDots");
+    if (dots) dots.textContent = "";
+  }
+
+
   /* ---------- 渲染点位 ---------- */
   function isHighConfidence(cat) {
     var conf = typeof cat.confidence === "number" ? cat.confidence : 0;
@@ -594,6 +961,7 @@
     renderZoneStats();
     highlight(state.selectedId);
     scheduleLabelCollision();
+    renderStats();
   }
 
   function highlight(id) {
@@ -1046,6 +1414,9 @@
       }
       body.appendChild(source);
     }
+
+    var historyBox = buildHistoryBox(cat);
+    if (historyBox) body.appendChild(historyBox);
 
     body.appendChild(buildSuppRow({ type: "cat", cat: cat }));
     if (!cat.mergedInto) body.appendChild(buildEditBox(cat));
@@ -2772,6 +3143,7 @@
     stopPickMode(true);
     setContribStatus("已取消选点。", "");
   });
+  document.getElementById("historyClear").addEventListener("click", clearCatHistory);
 
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
