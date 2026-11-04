@@ -47,6 +47,10 @@
     </div>
   </header>
 
+  <details class="notice data-details" id="dataDetails">
+    <summary><span>数据说明</span><span class="notice-summary" id="noticeSummary">两遍采集 111 帖 · 2026-09-06 ～ 2026-11-02</span></summary>
+    <p class="notice-body" id="dataNotice">两遍采集：第一遍 50 帖 + 第二遍 61 帖，postId 无重叠，合计 111 条唯一帖（2026-09-06 ～ 2026-11-02）｜第一遍列表曾少计 4 条，已按合并清单补齐；疑似同猫只标注不合并。本轮新增图片推断：仅依据配图中可判读的环境线索（楼牌/材质/跑道/围网等），置信度 0.15–0.35，全部标记“图片推断，未经证实”；24 只猫与 48 条目击图片无可判读线索，保持未落点。正文没写的地点一律留空。</p>
+  </details>
   <p class="notice notice-warn" id="storageNote" hidden=""></p>
 
   <section class="controls" aria-label="筛选">
@@ -79,7 +83,7 @@
 
   <div class="map-row">
   <section class="map-card">
-    <div class="map-stage" id="mapStage" style="aspect-ratio: 1.045673 / 1; max-width: calc(89.93vh);">
+    <div class="map-stage" id="mapStage" style="aspect-ratio: 0.991051 / 1; max-width: calc(85.23vh);">
       <!-- 底图独立容器：image 与示意平面都放在这里，校准参数只作用于此层 -->
       <div class="map-focus" id="mapFocus">
       <div class="map-layer" id="mapLayer" style="transform: translate(0px, 0px) scale(1); --inv: 1;">
@@ -87,6 +91,12 @@
         <div class="empty-blocks" id="emptyBlocks"></div>
                 <div class="focus-shade" id="focusShade" aria-hidden="true"></div>
         <div class="focus-fx" id="focusFx" aria-hidden="true"><span class="focus-ring"></span><span class="focus-dot"><i></i><i></i></span></div>
+        <div class="cat-history-layer" id="catHistoryLayer" hidden>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <polyline class="history-line" id="historyLine" points=""></polyline>
+            <g id="historyDots"></g>
+          </svg>
+        </div>
         <div class="sights-layer" id="sightMarkers"></div>
                 <div class="markers" id="markers"></div>
         <div class="draft-marker" id="draftMarker" hidden>
@@ -99,6 +109,10 @@
       <div class="pick-banner" id="pickBanner" hidden>
         <span>点击地图选择猫咪出现的位置</span>
         <button type="button" id="pickCancel">取消</button>
+      </div>
+      <div class="history-badge" id="historyBadge" hidden>
+        <span id="historyBadgeText"></span>
+        <button type="button" id="historyClear">清除</button>
       </div>
       <div class="map-empty" id="mapEmpty" hidden="">当前筛选条件下没有点位</div>
     </div>
@@ -122,6 +136,23 @@
   </aside>
   </div>
 
+  <section class="stats-card" aria-label="数据统计">
+    <div class="stats-head">
+      <h2>数据统计 <span id="catStatsSummary">正在统计…</span></h2>
+    </div>
+    <p class="stats-note">基于可定位记录：整理落点、读者线索与图片推断；图片推断不等同于已核实目击。当前整理数据多数只有 1 个落点，读者 Issue 会自动累积足迹；点击猫名可在地图上查看。</p>
+    <div class="stats-grid">
+      <div class="stats-col">
+        <h3>每只猫出现地点 <span id="catStatsCount"></span></h3>
+        <div class="stats-list" id="catStats"></div>
+      </div>
+      <div class="stats-col">
+        <h3>地点猫数排行 <span id="placeStatsCount"></span></h3>
+        <div class="stats-list" id="placeStats"></div>
+      </div>
+    </div>
+  </section>
+
     <details class="maint">
     <summary class="maint-summary"><span>待确认合并</span><span class="maint-count" id="mergeSummaryTop">14 组疑似 · 12 组可勾选</span></summary>
 <section class="pending merges" id="mergeSection">
@@ -144,6 +175,10 @@
 <section class="pending" id="needSection">
     <div class="pending-head">
       <h2>最需要补充 <span id="needSummary">缺地点 28 · 名字冲突 4 · 疑似同一只 14 · 状态待确认 4</span></h2>
+      <div class="need-actions">
+        <button type="button" class="ghost-btn" id="copyAllSlots">复制全部待补充文本</button>
+        <button type="button" class="export-btn" id="exportPatch">下载补丁（JSON）</button>
+      </div>
     </div>
     <div class="ask">
       <b>知道它常在哪出没？</b>去频道帖子下面留一句就行。
@@ -158,10 +193,10 @@
 
 
     <details class="maint">
-    <summary class="maint-summary"><span>无图</span><span class="maint-count" id="pendingSummaryTop">共 85 条线索没有坐标</span></summary>
+    <summary class="maint-summary"><span>未落图</span><span class="maint-count" id="pendingSummaryTop">共 85 条线索没有坐标</span></summary>
 <section class="pending" id="pendingSection">
     <div class="pending-head">
-      <h2>无图 <span id="pendingSummary">共 85 条线索没有坐标（28 只猫 + 57 条目击）</span></h2>
+      <h2>未落图 <span id="pendingSummary">共 85 条线索没有坐标（28 只猫 + 57 条目击）</span></h2>
       <div class="seg" id="pendingTabs">
         <button type="button" data-tab="cats" aria-pressed="true">待定位的猫 <b id="pendCatNum">28</b></button>
         <button type="button" data-tab="sightings" aria-pressed="false">未归属目击 <b id="pendSightNum">57</b></button>
@@ -177,7 +212,7 @@
   <p class="foot-note">
     缺地点、缺时段、缺外观都正常：知道线索的话，去帖子下面写一句猫名和具体方位，下次整理时并进去。<br>
     数据来自小财论坛校宠版，采集于 <span id="footDate">2026-11-03</span> · 字段在本页内联数据中维护<br>
-    底图为官方平面图（webp）；调整 <code>basemap.width / height</code> 可校准地图比例
+    底图为内联矢量重绘版；调整 <code>basemap.width / height</code> 可校准地图比例
   </p>
 </div>
 
