@@ -100,8 +100,8 @@
   var ISSUE_REPO = "Mmdelicious/2026-Year-one";
   // 近似校区边界：如定位偏差大，可在此校准
   var CAMPUS_GEO = { north: 30.6860, south: 30.6770, west: 103.8154, east: 103.8270 };
-  var MAP_BOUNDS = { left: 3.2, right: 96.8, top: 2.6, bottom: 96.2 };
-  var ZONE_ANCHORS = { dorm: [[16.5, 11.5], [70.6, 66.7]], teaching: [[62.1, 27.9]], canteen: [[10.2, 47.5]] };
+  var MAP_BOUNDS = { left: 5, right: 90, top: 7, bottom: 85 };
+  var ZONE_ANCHORS = { dorm: [[13.8, 13.5], [61, 56.5]], teaching: [[42, 24]], canteen: [[8.9, 43.5]] };
   var contrib = { x: null, y: null, zone: "", photoName: "", photoUrl: "", picking: false, pickReady: false, geoBusy: false };
   var draftMarker = document.getElementById("draftMarker");
   var pickBanner = document.getElementById("pickBanner");
