@@ -1,0 +1,527 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="base-map" id="baseMap" viewBox="60 78 870 832" width="870" height="832" preserveAspectRatio="xMidYMid meet" role="img" aria-label="柳林校区平面图（矢量重绘）" font-family="Microsoft YaHei, PingFang SC, Hiragino Sans GB, Source Han Sans SC, Noto Sans CJK SC, sans-serif">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fafdf5"/><stop offset="1" stop-color="#ecf5e4"/></linearGradient>
+<linearGradient id="lake" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#8FD4F1"/><stop offset="1" stop-color="#3D9AD3"/></linearGradient>
+<filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.1" stdDeviation="1.2" flood-color="#6b5636" flood-opacity="0.33"/></filter>
+<pattern id="pave" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#f2ede1"/><path d="M0 0H7M0 7H7M0 0V7M7 0V7" stroke="#dbd2be" stroke-width="0.5"/></pattern>
+<pattern id="pave2" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#ece7d9"/><path d="M0 0V5M0 0H5" stroke="#d5ceba" stroke-width="0.4"/></pattern>
+</defs>
+<rect x="-56" y="-100" width="1030" height="1180" fill="url(#bg)"/>
+<text x="-34" y="-64" font-size="27" font-weight="700" fill="#2A3F26" letter-spacing="1.2">西南财经大学 · 柳林校区平面图</text>
+<text x="-34" y="-44" font-size="10.5" fill="#6B7B63">成都市温江区柳台大道555号 ｜ 占地约1630亩 ｜ 依照学校官方总平面图重绘（示意图，不按比例）</text>
+<line x1="20" y1="100" x2="930" y2="100" stroke="#dedcd3" stroke-width="17"/>
+<line x1="20" y1="100" x2="930" y2="100" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="6 6"/>
+<line x1="20" y1="878" x2="930" y2="878" stroke="#dedcd3" stroke-width="17"/>
+<line x1="20" y1="878" x2="930" y2="878" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="6 6"/>
+<line x1="770" y1="104" x2="902" y2="874" stroke="#dedcd3" stroke-width="14"/>
+<line x1="770" y1="104" x2="902" y2="874" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="6 6"/>
+<line x1="88" y1="104" x2="88" y2="874" stroke="#dedcd3" stroke-width="12"/>
+<line x1="88" y1="104" x2="88" y2="874" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="6 6"/>
+<text x="214" y="93" font-size="12" fill="#7C7A6C" letter-spacing="10">柳台大道</text>
+<text x="196" y="900" font-size="12" fill="#7C7A6C" letter-spacing="10">柳林大道</text>
+<text x="874" y="330" font-size="10.5" fill="#7C7A6C" transform="rotate(82 874 330)" letter-spacing="6">腾骧大道</text>
+<path d="M104 112 L766 112 L786 200 L804 320 L822 450 L840 580 L858 700 L876 862 L108 862 L104 112 Z" fill="#FCFEF8" stroke="#87A07C" stroke-width="2.2"/>
+<path d="M600 150 L758 150 L776 300 L616 300 Z" fill="#DFF0CE"/>
+<text x="688" y="196" font-size="10.5" fill="#6E8064" letter-spacing="3" paint-order="stroke" stroke="#DFF0CE" stroke-width="3">校外用地</text>
+<text x="872" y="700" font-size="9.6" fill="#7B8C6E" letter-spacing="1">温江老城区</text>
+<text x="800" y="836" font-size="9.6" fill="#7B8C6E" letter-spacing="1">城市绿地</text>
+<text x="-40" y="600" font-size="9" fill="#7B8C6E" transform="rotate(-90 -40 600)">科技开发园综合服务区</text>
+<rect x="340" y="310" width="86" height="76" fill="#DCEED0"/>
+<rect x="470" y="640" width="96" height="60" fill="#DCEED0"/>
+<rect x="576" y="690" width="60" height="80" fill="#DCEED0"/>
+<rect x="330" y="430" width="120" height="44" fill="#DFF1D4"/>
+<line x1="106" y1="202" x2="780" y2="202" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="202" x2="780" y2="202" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="106" y1="292" x2="780" y2="292" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="292" x2="780" y2="292" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="106" y1="388" x2="780" y2="388" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="388" x2="780" y2="388" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="106" y1="432" x2="780" y2="432" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="432" x2="780" y2="432" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="106" y1="500" x2="780" y2="500" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="500" x2="780" y2="500" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="106" y1="636" x2="780" y2="636" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="636" x2="780" y2="636" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="106" y1="690" x2="780" y2="690" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="690" x2="780" y2="690" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="106" y1="764" x2="780" y2="764" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="106" y1="764" x2="780" y2="764" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="196" y1="112" x2="196" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="196" y1="112" x2="196" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="288" y1="112" x2="288" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="288" y1="112" x2="288" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="358" y1="112" x2="358" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="358" y1="112" x2="358" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="440" y1="112" x2="440" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="440" y1="112" x2="440" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="520" y1="112" x2="520" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="520" y1="112" x2="520" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="596" y1="112" x2="596" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="596" y1="112" x2="596" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="668" y1="112" x2="668" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="668" y1="112" x2="668" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="740" y1="112" x2="740" y2="862" stroke="#e5e2d6" stroke-width="6.0" stroke-linecap="round"/>
+<line x1="740" y1="112" x2="740" y2="862" stroke="#fbf9f2" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M437 112 H463 L461 407 H439 Z" fill="url(#pave)"/>
+<path d="M436 407 H478 V450 H436 Z" fill="url(#pave)"/>
+<path d="M440 450 H470 V520 H440 Z" fill="url(#pave)"/>
+<path d="M446 520 H478 V700 H446 Z" fill="url(#pave)"/>
+<path d="M478 700 H512 V780 H478 Z" fill="url(#pave2)"/>
+<path d="M292 383 H437 V400 H292 Z" fill="url(#pave2)"/>
+<path d="M463 297 H520 V312 H463 Z" fill="url(#pave2)"/>
+<path d="M344 232 C348 220 362 214 372 220 C378 210 396 210 402 222 C412 214 428 218 432 230 C440 242 436 258 424 266 C416 280 398 288 386 284 C378 292 360 292 352 284 C342 286 332 278 330 268 C322 262 320 250 326 242 C330 234 336 230 344 232 Z" fill="url(#lake)" stroke="#2E86BC" stroke-width="1.4"/>
+<text x="388" y="254" font-size="9.6" fill="#0C5885" text-anchor="middle" font-weight="700">柳水湖</text>
+<path d="M108 190 C140 198 172 192 200 196 C236 202 272 212 300 222 C316 228 330 230 342 232" fill="none" stroke="#63B8E8" stroke-width="5" stroke-linecap="round"/>
+<path d="M334 278 C324 292 314 300 306 312 C298 326 296 342 296 358 C296 376 300 392 298 410 C296 428 300 444 300 462 C300 480 296 496 298 514 C300 532 308 548 316 562 C326 580 336 596 342 612 C350 630 366 644 384 656 C404 670 424 684 446 700 C464 714 486 726 500 742 C510 756 512 774 510 792 C508 812 506 832 502 848" fill="none" stroke="#63B8E8" stroke-width="6.6" stroke-linecap="round"/>
+<rect x="352" y="290" width="86" height="8" rx="4" fill="#eae1c8" stroke="#b9a479" stroke-width="0.85"/>
+<circle cx="404" cy="312" r="8" fill="#DFCEA9" stroke="#b9a479" stroke-width="1"/>
+<circle cx="455" cy="428" r="29" fill="#f2ede1" stroke="#c9bda4" stroke-width="1.1"/>
+<circle cx="455" cy="428" r="18" fill="none" stroke="#c9bda4" stroke-width="0.85"/>
+<circle cx="455" cy="428" r="5" fill="#9a8a63"/>
+<text x="455" y="392" font-size="9" fill="#7A6538" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="2">济民广场</text>
+<g fill="#8FBE78" opacity="0.48">
+<circle cx="313.6" cy="206.3" r="3.3"/>
+<circle cx="286.7" cy="198.1" r="2.6"/>
+<circle cx="301.0" cy="187.5" r="2.2"/>
+<circle cx="298.2" cy="189.6" r="2.6"/>
+<circle cx="284.8" cy="186.5" r="3.0"/>
+<circle cx="297.5" cy="196.3" r="3.1"/>
+<circle cx="295.5" cy="185.8" r="3.2"/>
+<circle cx="310.1" cy="242.7" r="2.9"/>
+<circle cx="319.3" cy="237.6" r="3.1"/>
+<circle cx="304.8" cy="241.2" r="3.0"/>
+<circle cx="303.5" cy="232.8" r="2.7"/>
+<circle cx="313.2" cy="241.6" r="2.6"/>
+<circle cx="311.4" cy="234.5" r="2.2"/>
+<circle cx="303.8" cy="245.5" r="2.2"/>
+<circle cx="290.0" cy="322.5" r="2.0"/>
+<circle cx="294.2" cy="331.4" r="3.2"/>
+<circle cx="295.6" cy="327.6" r="2.4"/>
+<circle cx="294.9" cy="335.2" r="2.8"/>
+<circle cx="293.7" cy="322.6" r="3.2"/>
+<circle cx="305.4" cy="336.2" r="2.3"/>
+<circle cx="301.2" cy="337.8" r="2.8"/>
+<circle cx="327.8" cy="350.7" r="3.5"/>
+<circle cx="308.2" cy="354.7" r="1.9"/>
+<circle cx="324.8" cy="359.0" r="3.5"/>
+<circle cx="324.7" cy="363.1" r="2.8"/>
+<circle cx="328.7" cy="359.9" r="2.5"/>
+<circle cx="328.4" cy="354.1" r="2.2"/>
+<circle cx="308.7" cy="355.5" r="2.2"/>
+<circle cx="378.4" cy="337.8" r="2.2"/>
+<circle cx="358.5" cy="330.5" r="2.2"/>
+<circle cx="369.0" cy="335.4" r="2.3"/>
+<circle cx="366.1" cy="336.9" r="2.6"/>
+<circle cx="364.2" cy="336.8" r="3.2"/>
+<circle cx="377.5" cy="333.2" r="2.6"/>
+<circle cx="372.6" cy="335.7" r="2.9"/>
+<circle cx="394.2" cy="336.8" r="2.6"/>
+<circle cx="406.0" cy="340.9" r="2.8"/>
+<circle cx="407.2" cy="333.8" r="2.9"/>
+<circle cx="396.3" cy="340.9" r="3.2"/>
+<circle cx="394.5" cy="347.2" r="2.0"/>
+<circle cx="401.4" cy="340.7" r="2.3"/>
+<circle cx="401.3" cy="339.5" r="2.6"/>
+<circle cx="445.2" cy="321.4" r="2.5"/>
+<circle cx="446.9" cy="323.8" r="3.3"/>
+<circle cx="432.9" cy="333.1" r="2.2"/>
+<circle cx="438.8" cy="328.7" r="2.0"/>
+<circle cx="444.8" cy="329.7" r="3.0"/>
+<circle cx="440.9" cy="331.0" r="2.7"/>
+<circle cx="435.1" cy="336.9" r="2.0"/>
+<circle cx="309.0" cy="406.3" r="2.7"/>
+<circle cx="306.6" cy="403.0" r="2.9"/>
+<circle cx="295.0" cy="396.9" r="2.5"/>
+<circle cx="295.3" cy="407.9" r="2.4"/>
+<circle cx="297.3" cy="398.6" r="3.2"/>
+<circle cx="299.5" cy="400.9" r="2.3"/>
+<circle cx="294.7" cy="392.9" r="2.2"/>
+<circle cx="324.3" cy="476.1" r="2.7"/>
+<circle cx="320.6" cy="469.4" r="2.1"/>
+<circle cx="331.6" cy="469.0" r="3.3"/>
+<circle cx="324.2" cy="476.1" r="2.3"/>
+<circle cx="341.6" cy="472.3" r="2.0"/>
+<circle cx="337.4" cy="466.1" r="2.5"/>
+<circle cx="321.5" cy="475.8" r="2.0"/>
+<circle cx="397.7" cy="468.2" r="3.0"/>
+<circle cx="387.0" cy="462.7" r="3.4"/>
+<circle cx="395.7" cy="464.3" r="3.5"/>
+<circle cx="401.9" cy="464.5" r="1.9"/>
+<circle cx="394.7" cy="463.8" r="3.1"/>
+<circle cx="391.3" cy="473.6" r="2.8"/>
+<circle cx="398.5" cy="475.6" r="2.9"/>
+<circle cx="454.0" cy="467.3" r="2.1"/>
+<circle cx="443.0" cy="475.7" r="2.2"/>
+<circle cx="450.4" cy="467.1" r="2.9"/>
+<circle cx="452.7" cy="475.7" r="2.6"/>
+<circle cx="449.0" cy="472.4" r="3.1"/>
+<circle cx="461.4" cy="467.0" r="3.3"/>
+<circle cx="462.6" cy="477.6" r="2.1"/>
+<circle cx="497.4" cy="484.3" r="3.2"/>
+<circle cx="489.9" cy="478.3" r="3.1"/>
+<circle cx="505.7" cy="480.6" r="2.2"/>
+<circle cx="497.9" cy="473.0" r="2.4"/>
+<circle cx="498.4" cy="485.1" r="2.8"/>
+<circle cx="498.1" cy="476.0" r="2.4"/>
+<circle cx="503.8" cy="479.1" r="2.2"/>
+<circle cx="358.4" cy="601.4" r="3.4"/>
+<circle cx="350.9" cy="602.3" r="2.6"/>
+<circle cx="352.8" cy="607.8" r="3.5"/>
+<circle cx="354.2" cy="598.7" r="2.0"/>
+<circle cx="358.8" cy="598.0" r="2.5"/>
+<circle cx="338.5" cy="591.3" r="2.5"/>
+<circle cx="362.3" cy="604.5" r="3.0"/>
+<circle cx="389.7" cy="562.4" r="2.2"/>
+<circle cx="388.3" cy="559.1" r="2.8"/>
+<circle cx="386.3" cy="566.7" r="2.1"/>
+<circle cx="376.5" cy="565.6" r="2.1"/>
+<circle cx="389.1" cy="563.0" r="2.9"/>
+<circle cx="391.5" cy="567.7" r="2.8"/>
+<circle cx="379.3" cy="563.6" r="3.5"/>
+<circle cx="424.4" cy="562.3" r="2.7"/>
+<circle cx="431.1" cy="571.0" r="2.4"/>
+<circle cx="441.1" cy="557.7" r="3.2"/>
+<circle cx="431.7" cy="572.9" r="2.1"/>
+<circle cx="434.5" cy="573.7" r="3.0"/>
+<circle cx="420.7" cy="573.3" r="3.5"/>
+<circle cx="420.7" cy="571.7" r="2.0"/>
+<circle cx="460.8" cy="604.7" r="3.1"/>
+<circle cx="480.1" cy="602.1" r="2.7"/>
+<circle cx="465.0" cy="601.2" r="3.5"/>
+<circle cx="473.2" cy="605.9" r="2.2"/>
+<circle cx="475.2" cy="603.7" r="2.0"/>
+<circle cx="477.0" cy="594.9" r="2.2"/>
+<circle cx="460.3" cy="602.6" r="2.1"/>
+<circle cx="342.4" cy="654.6" r="3.2"/>
+<circle cx="336.7" cy="665.3" r="2.8"/>
+<circle cx="337.7" cy="666.6" r="2.1"/>
+<circle cx="337.7" cy="661.3" r="2.8"/>
+<circle cx="330.3" cy="671.6" r="2.6"/>
+<circle cx="339.2" cy="656.2" r="2.4"/>
+<circle cx="334.4" cy="666.1" r="3.2"/>
+<circle cx="293.6" cy="694.8" r="3.2"/>
+<circle cx="292.1" cy="684.3" r="2.8"/>
+<circle cx="310.5" cy="691.8" r="2.6"/>
+<circle cx="300.2" cy="694.9" r="2.7"/>
+<circle cx="300.8" cy="691.5" r="3.4"/>
+<circle cx="306.6" cy="695.4" r="2.3"/>
+<circle cx="302.2" cy="695.1" r="3.0"/>
+<circle cx="570.8" cy="647.2" r="2.1"/>
+<circle cx="560.2" cy="637.5" r="2.2"/>
+<circle cx="560.0" cy="648.4" r="3.1"/>
+<circle cx="550.4" cy="635.6" r="2.5"/>
+<circle cx="569.2" cy="639.3" r="2.2"/>
+<circle cx="561.2" cy="635.6" r="2.0"/>
+<circle cx="562.2" cy="648.5" r="3.1"/>
+<circle cx="605.2" cy="654.5" r="2.8"/>
+<circle cx="603.0" cy="664.1" r="2.6"/>
+<circle cx="590.2" cy="666.8" r="2.3"/>
+<circle cx="605.2" cy="659.4" r="3.1"/>
+<circle cx="596.4" cy="653.5" r="2.6"/>
+<circle cx="599.6" cy="664.6" r="2.5"/>
+<circle cx="603.7" cy="658.0" r="3.1"/>
+<circle cx="682.2" cy="306.6" r="3.4"/>
+<circle cx="678.6" cy="306.2" r="3.1"/>
+<circle cx="694.6" cy="293.2" r="3.1"/>
+<circle cx="696.5" cy="302.2" r="3.4"/>
+<circle cx="700.7" cy="302.3" r="3.4"/>
+<circle cx="681.5" cy="296.5" r="2.7"/>
+<circle cx="690.5" cy="307.8" r="2.9"/>
+<circle cx="662.4" cy="321.7" r="3.4"/>
+<circle cx="658.0" cy="323.4" r="2.9"/>
+<circle cx="658.0" cy="317.7" r="2.1"/>
+<circle cx="650.2" cy="317.6" r="2.4"/>
+<circle cx="651.6" cy="319.8" r="2.5"/>
+<circle cx="668.5" cy="324.0" r="3.0"/>
+<circle cx="666.9" cy="316.8" r="2.1"/>
+<circle cx="562.6" cy="395.3" r="3.5"/>
+<circle cx="558.2" cy="406.7" r="2.3"/>
+<circle cx="550.2" cy="402.2" r="3.0"/>
+<circle cx="554.1" cy="407.4" r="3.5"/>
+<circle cx="564.5" cy="408.3" r="3.5"/>
+<circle cx="551.6" cy="404.0" r="3.1"/>
+<circle cx="565.6" cy="397.2" r="2.8"/>
+<circle cx="601.9" cy="425.5" r="2.0"/>
+<circle cx="597.3" cy="417.1" r="3.2"/>
+<circle cx="591.6" cy="413.1" r="2.1"/>
+<circle cx="591.6" cy="419.0" r="3.3"/>
+<circle cx="596.8" cy="413.7" r="3.0"/>
+<circle cx="596.3" cy="421.1" r="3.1"/>
+<circle cx="599.0" cy="423.7" r="2.9"/>
+<circle cx="247.0" cy="125.8" r="3.3"/>
+<circle cx="244.9" cy="118.9" r="2.7"/>
+<circle cx="245.4" cy="126.1" r="3.1"/>
+<circle cx="246.9" cy="126.7" r="2.8"/>
+<circle cx="242.8" cy="115.4" r="2.7"/>
+<circle cx="244.5" cy="128.0" r="3.3"/>
+<circle cx="238.8" cy="118.1" r="3.3"/>
+<circle cx="343.8" cy="446.7" r="2.0"/>
+<circle cx="349.1" cy="453.3" r="2.1"/>
+<circle cx="351.8" cy="453.5" r="3.1"/>
+<circle cx="347.4" cy="447.8" r="2.7"/>
+<circle cx="332.1" cy="453.9" r="2.6"/>
+<circle cx="347.0" cy="445.4" r="2.2"/>
+<circle cx="337.3" cy="443.4" r="2.6"/>
+<circle cx="530.2" cy="525.8" r="2.2"/>
+<circle cx="527.3" cy="515.6" r="2.3"/>
+<circle cx="523.0" cy="516.7" r="2.2"/>
+<circle cx="510.9" cy="514.9" r="2.2"/>
+<circle cx="529.1" cy="512.7" r="2.8"/>
+<circle cx="513.7" cy="523.5" r="1.9"/>
+<circle cx="517.2" cy="523.8" r="1.9"/>
+<circle cx="478.0" cy="637.2" r="2.7"/>
+<circle cx="482.8" cy="633.3" r="3.3"/>
+<circle cx="474.9" cy="644.3" r="2.1"/>
+<circle cx="471.1" cy="635.1" r="2.0"/>
+<circle cx="474.5" cy="634.3" r="2.0"/>
+<circle cx="487.7" cy="640.5" r="2.7"/>
+<circle cx="480.2" cy="644.9" r="2.0"/>
+<circle cx="519.1" cy="762.9" r="1.9"/>
+<circle cx="530.1" cy="762.2" r="3.3"/>
+<circle cx="518.0" cy="758.3" r="2.4"/>
+<circle cx="531.9" cy="751.9" r="3.1"/>
+<circle cx="541.0" cy="760.8" r="3.0"/>
+<circle cx="538.0" cy="765.9" r="3.2"/>
+<circle cx="529.7" cy="752.9" r="3.2"/>
+<circle cx="767.6" cy="473.2" r="2.4"/>
+<circle cx="770.4" cy="471.9" r="2.4"/>
+<circle cx="766.3" cy="465.6" r="2.3"/>
+<circle cx="768.9" cy="463.0" r="3.3"/>
+<circle cx="757.7" cy="471.1" r="3.0"/>
+<circle cx="768.9" cy="465.6" r="2.0"/>
+<circle cx="760.3" cy="465.6" r="2.6"/>
+<circle cx="761.4" cy="653.5" r="2.8"/>
+<circle cx="760.1" cy="656.3" r="2.5"/>
+<circle cx="761.1" cy="664.8" r="3.3"/>
+<circle cx="759.7" cy="664.9" r="2.2"/>
+<circle cx="775.0" cy="653.0" r="3.1"/>
+<circle cx="779.5" cy="656.2" r="2.2"/>
+<circle cx="766.5" cy="665.7" r="3.1"/>
+<circle cx="553.1" cy="745.8" r="3.1"/>
+<circle cx="569.1" cy="746.8" r="2.2"/>
+<circle cx="564.6" cy="733.2" r="2.2"/>
+<circle cx="560.7" cy="736.2" r="2.2"/>
+<circle cx="557.2" cy="739.4" r="3.4"/>
+<circle cx="561.6" cy="740.8" r="3.1"/>
+<circle cx="553.8" cy="744.4" r="3.1"/>
+</g>
+<rect x="267.50" y="130.50" width="14.33" height="21.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="267.50" y="152.50" width="14.33" height="21.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="282.83" y="130.50" width="14.33" height="21.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="282.83" y="152.50" width="14.33" height="21.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="298.17" y="130.50" width="14.33" height="21.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="298.17" y="152.50" width="14.33" height="21.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="117.50" y="580.50" width="25.50" height="19.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="117.50" y="600.50" width="25.50" height="19.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="117.50" y="620.50" width="25.50" height="19.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="144.00" y="580.50" width="25.50" height="19.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="144.00" y="600.50" width="25.50" height="19.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="144.00" y="620.50" width="25.50" height="19.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="180.50" y="588.50" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="180.50" y="613.00" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="201.10" y="588.50" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="201.10" y="613.00" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="221.70" y="588.50" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="221.70" y="613.00" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="242.30" y="588.50" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="242.30" y="613.00" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="262.90" y="588.50" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="262.90" y="613.00" width="19.60" height="23.50" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="540.50" y="407.50" width="18.00" height="24.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="540.50" y="432.50" width="18.00" height="24.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="559.50" y="407.50" width="18.00" height="24.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="559.50" y="432.50" width="18.00" height="24.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="578.50" y="407.50" width="18.00" height="24.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="578.50" y="432.50" width="18.00" height="24.00" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.45"/>
+<rect x="218" y="408" width="80" height="138" rx="40" fill="#D9EBC8" stroke="#7E9D60" stroke-width="1.5"/>
+<rect x="227" y="418" width="62" height="118" rx="31" fill="#C2D9A8" stroke="#93B47B" stroke-width="1"/>
+<rect x="244" y="446" width="28" height="62" rx="14" fill="#ABCE8B" stroke="#7E9D60" stroke-width="0.9"/>
+<text x="258" y="560" font-size="7.4" fill="#3E5B2C" text-anchor="middle" font-weight="700">朝晖体育场</text>
+<rect x="793" y="713" width="54" height="107" rx="27" fill="#D9EBC8" stroke="#7E9D60" stroke-width="1.5"/>
+<rect x="801" y="722" width="38" height="89" rx="19" fill="#C2D9A8" stroke="#93B47B" stroke-width="1"/>
+<rect x="811" y="745" width="18" height="43" rx="9" fill="#ABCE8B" stroke="#7E9D60" stroke-width="0.9"/>
+<text x="820" y="800" font-size="6.6" fill="#2E4A1E" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#F2F8EC" stroke-width="2.4">晨晖运动场</text>
+<g class="bld" data-name="榕园" data-cat="学生公寓">
+<rect x="150" y="150" width="107" height="47" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="152.8" y="152.8" width="55.6" height="41.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="英诚楼" data-cat="教学科研">
+<rect x="327" y="127" width="60" height="72" rx="1.3" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="329.8" y="158.7" width="54.4" height="33.1" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="弘远楼" data-cat="文化场馆">
+<rect x="463" y="110" width="87" height="90" rx="1.3" fill="#F2D1A4" stroke="#B98548" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="465.8" y="112.8" width="81.4" height="84.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="松园" data-cat="学生公寓">
+<rect x="127" y="217" width="66" height="70" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="129.8" y="219.8" width="60.4" height="36.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="竹园" data-cat="学生公寓">
+<rect x="212" y="222" width="71" height="60" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="214.8" y="224.8" width="65.4" height="31.2" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="宜宾楼" data-cat="行政后勤">
+<rect x="118" y="289" width="60" height="22" rx="1.3" fill="#E5B87F" stroke="#A8712F" stroke-width="0.95" filter="url(#sh)"/>
+</g>
+<g class="bld" data-name="后勤综合楼" data-cat="行政后勤">
+<rect x="118" y="317" width="69" height="60" rx="1.3" fill="#E5B87F" stroke="#A8712F" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="120.8" y="319.8" width="63.4" height="31.2" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="梅园" data-cat="学生公寓">
+<rect x="203" y="320" width="64" height="60" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="205.8" y="322.8" width="58.4" height="31.2" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="经世楼" data-cat="教学科研">
+<rect x="473" y="237" width="77" height="100" rx="1.3" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="476.2" y="240.2" width="30.8" height="93.6" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="教学楼" data-cat="教学科研"><polygon points="556,244 612,252 606,272 552,264" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.95" filter="url(#sh)"/></g>
+<g class="bld" data-name="教学楼" data-cat="教学科研"><polygon points="548,286 608,294 602,314 542,306" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.95" filter="url(#sh)"/></g>
+<g class="bld" data-name="教学楼" data-cat="教学科研"><polygon points="541,326 596,334 590,354 535,346" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.95" filter="url(#sh)"/></g>
+<g class="bld" data-name="其孜楼" data-cat="图书馆">
+<rect x="340" y="436" width="38" height="24" rx="1.3" fill="#EAAE67" stroke="#A55F26" stroke-width="0.95" filter="url(#sh)"/>
+</g>
+<g class="bld" data-name="图书馆" data-cat="图书馆">
+<rect x="392" y="452" width="52" height="44" rx="1.3" fill="#EAAE67" stroke="#A55F26" stroke-width="0.95" filter="url(#sh)"/>
+</g>
+<g class="bld" data-name="学生活动中心" data-cat="文化场馆">
+<rect x="528" y="700" width="54" height="60" rx="1.3" fill="#F2D1A4" stroke="#B98548" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="553.9" y="703.2" width="22.7" height="53.6" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="教学楼" data-cat="教学科研">
+<rect x="647" y="340" width="93" height="57" rx="1.3" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="649.8" y="342.8" width="87.4" height="51.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="教学楼" data-cat="教学科研">
+<rect x="637" y="400" width="103" height="63" rx="1.3" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="639.8" y="402.8" width="97.4" height="57.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="智园" data-cat="学生公寓">
+<rect x="591" y="511" width="58" height="66" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="593.8" y="513.8" width="52.4" height="60.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="慧园" data-cat="学生公寓">
+<rect x="663" y="533" width="70" height="68" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="665.8" y="535.8" width="64.4" height="62.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="诚园" data-cat="学生公寓">
+<rect x="741" y="555" width="49" height="64" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="743.8" y="557.8" width="43.4" height="58.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="信园" data-cat="学生公寓">
+<rect x="561" y="589" width="60" height="50" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="563.8" y="591.8" width="54.4" height="44.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="敏园" data-cat="学生公寓">
+<rect x="641" y="611" width="66" height="44" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="643.8" y="613.8" width="60.4" height="38.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="毅园" data-cat="学生公寓">
+<rect x="715" y="631" width="58" height="38" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="717.8" y="633.8" width="52.4" height="32.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="三味堂" data-cat="食堂餐饮">
+<rect x="118" y="445" width="48" height="25" rx="1.3" fill="#EAB275" stroke="#A56A2C" stroke-width="0.95" filter="url(#sh)"/>
+</g>
+<g class="bld" data-name="一粟堂" data-cat="食堂餐饮">
+<rect x="118" y="478" width="48" height="24" rx="1.3" fill="#EAB275" stroke="#A56A2C" stroke-width="0.95" filter="url(#sh)"/>
+</g>
+<g class="bld" data-name="游泳馆" data-cat="运动场地">
+<rect x="127" y="490" width="43" height="43" rx="1.3" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.95" filter="url(#sh)"/>
+</g>
+<g class="bld" data-name="学生公寓" data-cat="学生公寓">
+<rect x="113" y="657" width="77" height="40" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="115.8" y="659.8" width="71.4" height="34.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="学生公寓" data-cat="学生公寓">
+<rect x="193" y="660" width="74" height="40" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="195.8" y="662.8" width="68.4" height="34.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="学生公寓" data-cat="学生公寓">
+<rect x="113" y="703" width="77" height="40" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="115.8" y="705.8" width="71.4" height="34.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="学生公寓" data-cat="学生公寓">
+<rect x="200" y="707" width="73" height="40" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="202.8" y="709.8" width="67.4" height="34.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="学生公寓" data-cat="学生公寓">
+<rect x="273" y="700" width="74" height="40" rx="1.3" fill="#F1C992" stroke="#BC8442" stroke-width="0.95" filter="url(#sh)"/>
+<rect x="275.8" y="702.8" width="68.4" height="34.4" rx="0.8" fill="#B0D19B" stroke="#93B47B" stroke-width="0.45"/>
+</g>
+<g class="bld" data-name="柳林体育馆" data-cat="运动场地"><polygon points="742,699 772,700 796,718 802,744 798,772 782,794 758,803 736,798 720,784 710,764 707,740 712,718 724,704" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.95" filter="url(#sh)"/></g>
+<g class="bld" data-name="五谷堂" data-cat="食堂餐饮"><polygon points="773,588 812,592 834,610 840,640 834,668 818,690 792,682 774,664 766,634 766,608" fill="#EAB275" stroke="#A56A2C" stroke-width="0.95" filter="url(#sh)"/></g>
+<text x="180" y="174" font-size="8.8" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">榕园</text>
+<text x="357" y="148" font-size="8.8" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">英诚楼</text>
+<text x="505" y="176" font-size="9.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">弘远楼</text>
+<text x="160" y="247" font-size="9.2" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">松园</text>
+<text x="247" y="250" font-size="9.2" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">竹园</text>
+<text x="148" y="305" font-size="7.2" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">宜宾楼</text>
+<text x="150" y="350" font-size="7.4" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">后勤综合楼</text>
+<text x="235" y="348" font-size="9.2" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">梅园</text>
+<text x="512" y="290" font-size="10.0" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">经世楼</text>
+<text x="359" y="452" font-size="6.0" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">其孜楼</text>
+<text x="418" y="474" font-size="9.0" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">图书馆</text>
+<text x="555" y="725" font-size="6.5" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">学生活动中心</text>
+<text x="620.0" y="538.72" font-size="7.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">智园</text>
+<text x="698.0" y="561.56" font-size="7.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">慧园</text>
+<text x="765.5" y="581.88" font-size="7.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">诚园</text>
+<text x="591.0" y="610.0" font-size="7.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">信园</text>
+<text x="674.0" y="629.48" font-size="7.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">敏园</text>
+<text x="744.0" y="646.96" font-size="7.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">毅园</text>
+<text x="142" y="461" font-size="7.2" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">三味堂</text>
+<text x="142" y="492" font-size="7.2" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">一粟堂</text>
+<text x="752" y="752" font-size="8.6" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">柳林体育馆</text>
+<text x="800" y="636" font-size="8.2" fill="#3B2A16" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="1.9" stroke-linejoin="round">五谷堂</text>
+<text x="300" y="640" font-size="7" fill="#6B4E28" text-anchor="middle" paint-order="stroke" stroke="#FFFFFF" stroke-width="2">学生公寓</text>
+<text x="700" y="486" font-size="6.6" fill="#6B4E28" text-anchor="middle">智·慧·诚·信·敏·毅园</text>
+<text x="580" y="236" font-size="6.6" fill="#7A5A32" text-anchor="middle">教学楼</text>
+<circle cx="450" cy="112" r="4.2" fill="#FFFFFF" stroke="#C0392B" stroke-width="2"/>
+<text x="458" y="105" font-size="8.6" fill="#B0362A" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="2.1">学校主入口</text>
+<circle cx="398" cy="862" r="4.2" fill="#FFFFFF" stroke="#C0392B" stroke-width="2"/>
+<text x="398" y="876" font-size="8.6" fill="#B0362A" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="2.1">学校次入口</text>
+<circle cx="818" cy="545" r="4.2" fill="#FFFFFF" stroke="#C0392B" stroke-width="2"/>
+<text x="826" y="549" font-size="8.6" fill="#B0362A" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#FFFFFF" stroke-width="2.1">学校次入口</text>
+<text x="240" y="197" font-size="6.8" fill="#93A089" transform="rotate(0 240 197)">小涧路</text>
+<text x="430" y="232" font-size="6.8" fill="#93A089" transform="rotate(0 430 232)">小涧路</text>
+<text x="724" y="322" font-size="6.8" fill="#93A089" transform="rotate(12 724 322)">大涧路</text>
+<text x="322" y="630" font-size="6.8" fill="#93A089" transform="rotate(0 322 630)">大涧路</text>
+<text x="588" y="448" font-size="6.8" fill="#93A089" transform="rotate(90 588 448)">大涧路</text>
+<text x="140" y="380" font-size="6.8" fill="#93A089" transform="rotate(90 140 380)">环湖路</text>
+<text x="300" y="616" font-size="6.8" fill="#93A089" transform="rotate(0 300 616)">环湖路</text>
+<text x="390" y="380" font-size="6.8" fill="#93A089" transform="rotate(0 390 380)">环湖路</text>
+<g transform="translate(880,148)">
+<circle cx="0" cy="0" r="22" fill="#FFFFFF" stroke="#87A07C" stroke-width="1.2" opacity="0.95"/>
+<path d="M0 -16 L6 5 L0 1 L-6 5 Z" fill="#C0392B"/>
+<text x="0" y="-20" font-size="8.4" fill="#2A3F26" text-anchor="middle" font-weight="700">N</text>
+</g>
+<g><rect x="-34" y="932" width="500" height="104" rx="7" fill="#FFFFFF" opacity="0.97" stroke="#CFDCC4" stroke-width="1"/>
+<text x="-22" y="950" font-size="9.6" fill="#2A3F26" font-weight="700">图例</text>
+<rect x="-22" y="960.5" width="12" height="9" rx="1.1" fill="#F0C48E" stroke="#B87E3C" stroke-width="0.85"/>
+<text x="-5" y="968" font-size="7.8" fill="#43503F">教学科研</text>
+<rect x="71" y="960.5" width="12" height="9" rx="1.1" fill="#E5B87F" stroke="#A8712F" stroke-width="0.85"/>
+<text x="88" y="968" font-size="7.8" fill="#43503F">行政后勤</text>
+<rect x="164" y="960.5" width="12" height="9" rx="1.1" fill="#EAAE67" stroke="#A55F26" stroke-width="0.85"/>
+<text x="181" y="968" font-size="7.8" fill="#43503F">图书馆</text>
+<rect x="257" y="960.5" width="12" height="9" rx="1.1" fill="#F2D1A4" stroke="#B98548" stroke-width="0.85"/>
+<text x="274" y="968" font-size="7.8" fill="#43503F">文化场馆</text>
+<rect x="350" y="960.5" width="12" height="9" rx="1.1" fill="#F1C992" stroke="#BC8442" stroke-width="0.85"/>
+<text x="367" y="968" font-size="7.8" fill="#43503F">学生公寓</text>
+<rect x="-22" y="981.5" width="12" height="9" rx="1.1" fill="#EAB275" stroke="#A56A2C" stroke-width="0.85"/>
+<text x="-5" y="989" font-size="7.8" fill="#43503F">食堂餐饮</text>
+<rect x="71" y="981.5" width="12" height="9" rx="1.1" fill="#C2D9A8" stroke="#7E9D60" stroke-width="0.85"/>
+<text x="88" y="989" font-size="7.8" fill="#43503F">运动场地</text>
+<rect x="164" y="981.5" width="12" height="9" rx="1.1" fill="#D9EBC8" stroke="#93B47B" stroke-width="0.85"/>
+<text x="181" y="989" font-size="7.8" fill="#43503F">绿地广场</text>
+<rect x="257" y="981.5" width="12" height="9" rx="1.1" fill="#63B8E8" stroke="#2E86BC" stroke-width="0.85"/>
+<text x="274" y="989" font-size="7.8" fill="#43503F">水域</text>
+<circle cx="-16" cy="1008" r="3.9" fill="#FFFFFF" stroke="#C0392B" stroke-width="1.8"/>
+<text x="-8" y="1012" font-size="7.8" fill="#43503F">校门</text>
+<line x1="21" y1="1008" x2="42" y2="1008" stroke="#63B8E8" stroke-width="4"/>
+<text x="48" y="1012" font-size="7.8" fill="#43503F">水系</text>
+<rect x="76" y="1001.5" width="12" height="10" rx="0.9" fill="#D9EBC8" stroke="#7E9D60" stroke-width="0.8"/>
+<text x="93" y="1012" font-size="7.8" fill="#43503F">田径场 / 球场</text>
+</g>
+<text x="-34" y="1060" font-size="7.8" fill="#7C8878">说明：本图依照学校官方总平面图重绘，用于表示建筑方位、路网结构与功能分区。原图为规划设计图，非实测地形图；建筑体量与道路线形经简化且未按比例，具体情况以现场标识为准。</text>
+</svg>
