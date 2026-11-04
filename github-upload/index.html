@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="西南财经大学柳林校区校园猫分布地图：具名猫、目击热区、图片推断与待补充区域。">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f7f4ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e6efe7'/%3E%3Cg fill='%232f6b52'%3E%3Ccircle cx='12' cy='15.4' r='4.6'/%3E%3Ccircle cx='6.4' cy='10.2' r='2.1'/%3E%3Ccircle cx='10.1' cy='8' r='2.1'/%3E%3Ccircle cx='13.9' cy='8' r='2.1'/%3E%3Ccircle cx='17.6' cy='10.2' r='2.1'/%3E%3C/g%3E%3C/svg%3E">
+<title>校园猫分布地图 · 柳林校区（原型）</title>
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+<div class="app">
+  <header class="head">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <g fill="#2f6b52">
+            <circle cx="12" cy="15.4" r="4.6"></circle>
+            <circle cx="6.4" cy="10.2" r="2.1"></circle>
+            <circle cx="10.1" cy="8" r="2.1"></circle>
+            <circle cx="13.9" cy="8" r="2.1"></circle>
+            <circle cx="17.6" cy="10.2" r="2.1"></circle>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <h1>校园猫分布地图</h1>
+        <p class="sub" id="campusName">西南财经大学 · 柳林校区</p>
+      </div>
+    </div>
+
+    <div class="head-right">
+    <div class="badges">
+      <span class="badge"><b id="statPosts">111</b> 帖 · <b id="statCats">34</b> 只猫 · <b id="statImages">270</b> 张图</span>
+      <span class="badge">落图 <b id="catCount">10</b> / <b id="catTotal">34</b></span>
+      <span class="badge">图片推断 <b id="statInferred">4</b> 只</span>
+      <span class="badge">目击点 <b id="statSpots">6</b> 处 · 覆盖 <b id="statPlacedSights">9</b>/<b id="statSights">57</b> 条</span>
+      <span class="badge" id="queueBadge">待合并 <b id="queueCount">0</b> 条</span>
+    </div>
+    <button type="button" class="contribute-btn" id="contributeBtn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+      提供猫咪线索
+    </button>
+    </div>
+  </header>
+
+  <p class="notice notice-warn" id="storageNote" hidden=""></p>
+
+  <section class="controls" aria-label="筛选">
+    <div class="chips" id="zoneChips"><span class="chip-ink" aria-hidden="true"></span><button type="button" class="chip" data-zone="all" aria-pressed="true">全部</button><button type="button" class="chip" data-zone="dorm" aria-pressed="false">宿舍区</button><button type="button" class="chip" data-zone="teaching" aria-pressed="false">教学区</button><button type="button" class="chip" data-zone="canteen" aria-pressed="false">食堂</button><button type="button" class="chip" data-zone="other" aria-pressed="false">其他</button></div>
+    <div class="layer-switches">
+      <label class="switch">
+        <input type="checkbox" id="catLayerToggle" checked="">
+        <span class="track" aria-hidden="true"></span>
+        <span>具名猫图层</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="sightLayerToggle" checked="">
+        <span class="track" aria-hidden="true"></span>
+        <span>目击热区</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="inferToggle" checked="">
+        <span class="track" aria-hidden="true"></span>
+        <span>显示图片推断点</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="lowToggle" checked="">
+        <span class="track" aria-hidden="true"></span>
+        <span>显示低置信度点位</span>
+      </label>
+    </div>
+  </section>
+
+  <p class="sr-only" id="mapStatus" role="status" aria-live="polite"></p>
+
+  <div class="map-row">
+  <section class="map-card">
+    <div class="map-stage" id="mapStage" style="aspect-ratio: 1.045673 / 1; max-width: calc(89.93vh);">
+      <!-- 底图独立容器：image 与示意平面都放在这里，校准参数只作用于此层 -->
+      <div class="map-focus" id="mapFocus">
+      <div class="map-layer" id="mapLayer" style="transform: translate(0px, 0px) scale(1); --inv: 1;">
+        <img class="base-map" id="baseMap" src="assets/campus-map.svg" width="870" height="832" alt="柳林校区平面图（矢量重绘）" decoding="async">
+        <div class="empty-blocks" id="emptyBlocks"></div>
+                <div class="focus-shade" id="focusShade" aria-hidden="true"></div>
+        <div class="focus-fx" id="focusFx" aria-hidden="true"><span class="focus-ring"></span><span class="focus-dot"><i></i><i></i></span></div>
+        <div class="sights-layer" id="sightMarkers"></div>
+                <div class="markers" id="markers"></div>
+        <div class="draft-marker" id="draftMarker" hidden>
+          <span class="pin draft-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="15.4" r="4.6" fill="#ffffff"></circle><circle cx="6.4" cy="10.2" r="2.1" fill="#ffffff"></circle><circle cx="10.1" cy="8" r="2.1" fill="#ffffff"></circle><circle cx="13.9" cy="8" r="2.1" fill="#ffffff"></circle><circle cx="17.6" cy="10.2" r="2.1" fill="#ffffff"></circle></svg></span>
+          <span class="marker-label">待提交位置</span>
+        </div>
+      </div>
+      </div>
+            <div class="focus-badge" id="focusBadge" hidden=""></div>
+      <div class="pick-banner" id="pickBanner" hidden>
+        <span>点击地图选择猫咪出现的位置</span>
+        <button type="button" id="pickCancel">取消</button>
+      </div>
+      <div class="map-empty" id="mapEmpty" hidden="">当前筛选条件下没有点位</div>
+    </div>
+
+    <div class="map-foot">
+      <span id="mapSource">底图：柳林校区矢量重绘平面图（示意，不按比例）</span>
+      <span class="legend-states">
+        <span class="legend-key"><i class="lg lg-ok"></i>已核实</span>
+        <span class="legend-key"><i class="lg lg-infer"></i>图片推断</span>
+        <span class="legend-key"><i class="lg lg-reader"></i>读者补充（未核实）</span>
+        <span class="legend-key"><i class="lg lg-need">?</i>待补充</span>
+        <span class="legend-key"><i class="lg lg-heat"></i>目击点（数字=条数）</span>
+      </span>
+    </div>
+  </section>
+
+  <aside class="zone-panel" aria-label="区域分布摘要">
+    <h2>区域分布 <span>目击 / 具名猫</span></h2>
+    <div id="zoneStats"></div>
+        <p class="zone-note" id="zoneNote">另有 48 条目击正文与配图都没有可判读地点，未计入区域统计；地图上斜纹区块表示该片区目前没有任何点位。</p>
+  </aside>
+  </div>
+
+    <details class="maint">
+    <summary class="maint-summary"><span>待确认合并</span><span class="maint-count" id="mergeSummaryTop">14 组疑似 · 12 组可勾选</span></summary>
+<section class="pending merges" id="mergeSection">
+    <div class="pending-head">
+      <h2>待确认合并 <span id="mergeSummary">14 组疑似 · 12 组可勾选 · 已合并 0 次</span></h2>
+      <div class="need-actions">
+        <button type="button" class="export-btn" id="mergeSelected">合并勾选项</button>
+        <button type="button" class="ghost-btn" id="undoMerge">撤销上一次合并</button>
+      </div>
+    </div>
+    <p class="pending-hint">勾选「就是同一只」后可执行合并：主记录保留，另一条并入别名与来源，并从图上消失；合并前自动保留快照，可撤销。合并只作用于当前浏览器，并写入 localStorage。</p>
+    <div class="merge-list" id="mergeList"></div>
+    </section>
+  </details>
+
+
+
+    <details class="maint">
+    <summary class="maint-summary"><span>最需要补充</span><span class="maint-count" id="needSummaryTop">缺地点 28 · 名字冲突 4 · 疑似同一只 14</span></summary>
+<section class="pending" id="needSection">
+    <div class="pending-head">
+      <h2>最需要补充 <span id="needSummary">缺地点 28 · 名字冲突 4 · 疑似同一只 14 · 状态待确认 4</span></h2>
+    </div>
+    <div class="ask">
+      <b>知道它常在哪出没？</b>去频道帖子下面留一句就行。
+      <span>写清猫名 + 楼栋方位，比如：朵朵在五谷堂后门的水泥台——只写「我知道」没法落点；看到会补进下一版。</span>
+    </div>
+    <p class="pending-hint">页面只负责把空位留清楚：不联网提交、不接第三方表单、不自动导入、不自动合并。每张卡片可直接填写并进入 localStorage 待合并队列，也可复制文本或下载 JSON 交给维护者。</p>
+    <div class="need-groups" id="needGroups"></div>
+        <p class="pending-hint" id="patchCount">当前有 28 只未落点猫，共 112 个字段位，其中 94 个为真空白（虚线框），18 个已有文字/状态。读者队列 0 条，合并 0 次。</p>
+  </section>
+  </details>
+
+
+
+    <details class="maint">
+    <summary class="maint-summary"><span>无图</span><span class="maint-count" id="pendingSummaryTop">共 85 条线索没有坐标</span></summary>
+<section class="pending" id="pendingSection">
+    <div class="pending-head">
+      <h2>无图 <span id="pendingSummary">共 85 条线索没有坐标（28 只猫 + 57 条目击）</span></h2>
+      <div class="seg" id="pendingTabs">
+        <button type="button" data-tab="cats" aria-pressed="true">待定位的猫 <b id="pendCatNum">28</b></button>
+        <button type="button" data-tab="sightings" aria-pressed="false">未归属目击 <b id="pendSightNum">57</b></button>
+      </div>
+    </div>
+    <p class="pending-hint">只写原文里真实存在的位置线索；达不到「能落到某个楼」这一级的，一律不进地图，也不补坐标。</p>
+    <div class="pending-list" id="pendingList"></div>
+  </section>
+  </details>
+
+
+
+  <p class="foot-note">
+    缺地点、缺时段、缺外观都正常：知道线索的话，去帖子下面写一句猫名和具体方位，下次整理时并进去。<br>
+    数据来自小财论坛校宠版，采集于 <span id="footDate">2026-11-03</span> · 字段在本页内联数据中维护<br>
+    底图为内联矢量重绘版；调整 <code>basemap.width / height</code> 可校准地图比例
+  </p>
+</div>
+
+<div class="backdrop" id="backdrop" hidden=""></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="catName" hidden=""></div>
+
+
+
+<script src="data/campus-data.js"></script>
+<script src="data/reader-submissions.js"></script>
+<script src="js/app.js"></script>
+
+
+</body></html>
